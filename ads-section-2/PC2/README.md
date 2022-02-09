@@ -23,7 +23,7 @@ int main () {
 <br>
 
 <footer align="center">
-    <a href="https://classroom.google.com/c/NDU4OTkwNjkyMTI4">
+    <a href="https://classroom.google.com/c/NDU4OTkwNjkyMTI4" target="_blank">
         <img src="../.github/classroom.png" width="100">
     </a>
 </footer>
