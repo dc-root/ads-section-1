@@ -24,6 +24,6 @@ int main () {
 
 <footer align="center">
     <a href="https://classroom.google.com/c/NDU4OTkwNjkyMTI4">
-        <img align="center" src="../.github/classroom.png" width="100">
+        <img src="../.github/classroom.png" width="100">
     </a>
 </footer>
