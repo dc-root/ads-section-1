@@ -1,4 +1,4 @@
-<h1 align="center">Analise e Desenvolviment de Sistemas - 2º periodo</h1>
+<h1 align="center">Analise e Desenvolviment de Sistemas</h1>
 
 <div width="auto">
 
