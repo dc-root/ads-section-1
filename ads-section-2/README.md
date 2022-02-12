@@ -9,9 +9,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main () {
-    printf("Hello Word!!");
-    return 0;
+int void () {
+    printf("Starting one more step!");
 }
 ```
 </div>
