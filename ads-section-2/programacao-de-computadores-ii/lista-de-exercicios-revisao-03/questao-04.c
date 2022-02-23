@@ -17,10 +17,10 @@ int main () {
   }
 
   // Primeiro vetor
-  printf("\nTabela dos dois vetores\n");
+  printf("\nTabela dos dois vetores\n\nvetor\tvetor(x5)\n");
   for (int i=0; i<qnt_num; i++) {
-    printf("%d ", primeiroVetor[i]);
-    printf(" %d\n", segundoVetor[i]);
+    printf("%d", primeiroVetor[i]);
+    printf("\t%d\n", segundoVetor[i]);
 
   }
   return 0;

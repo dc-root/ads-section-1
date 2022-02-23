@@ -31,13 +31,13 @@ int main () {
   }
 
   // Imprimindo os nomes
-  printf("\n\nlista inversa:\n\n");
+  printf("\n\nlista dos nomes digitados:\n\n");
   for (int i=0; i<qnt_pessoas; i++) {
     printf("%s\n", nomes[i].nome);
   }
 
   // Lista de nomes inversos
-  printf("\nlista de nomes inversa:\n\n");
+  printf("\nlista inversa dos nomes:\n\n");
   for (int i=qnt_pessoas; i>=0; i--) {
     printf("%s\n", nomes[i].nome);
   }

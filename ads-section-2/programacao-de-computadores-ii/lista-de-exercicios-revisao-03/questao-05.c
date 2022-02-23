@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define qnt_num 5
+#define qnt_num 20
 
 int main () {
   int vetor[qnt_num], x=0, numeroEncontrado=0;
