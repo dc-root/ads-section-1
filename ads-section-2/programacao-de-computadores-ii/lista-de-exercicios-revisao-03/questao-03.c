@@ -4,25 +4,22 @@
 #define qnt_num 10
 
 int main () {
-  int numerosImpares[qnt_num];  
-  int numero=0;
+  int vetorNumerosImpares[qnt_num];  
+  int numeroImpar=0, count=0;
 
-  while (numero < 10) {
-    
-    if (numero % 2 == 0) {
-      numerosImpares[numero];
-      numero++;
+  while (numeroImpar < qnt_num) {
+    if (count % 2 != 0) {
+      vetorNumerosImpares[numeroImpar] = count;
+      numeroImpar++;
     }
+    count++;
   }
  
   printf("Os %d primeiros numeros impares são: ", qnt_num);
   
   for (int i=0; i<qnt_num; i++) {
-    printf(" %d", numerosImpares[i]);
+    printf(" %d", vetorNumerosImpares[i]);
   }
 
   return 0;
 }
-
-
-// !!!!!!!!!!!!!!!!!!
