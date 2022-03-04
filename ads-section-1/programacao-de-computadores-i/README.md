@@ -1,4 +1,4 @@
-<h1 align="center">&lt;Computer Pogramming II/&gt;</h1>
+<h1 align="center">&lt;Computer Pogramming I/&gt;</h1>
 
 <div align="left" widht="100">
     <img align="right" src="../../.github/Robotocat.png" width="325" alt="octodex-img" title="octodex">

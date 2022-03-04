@@ -1,4 +1,4 @@
-<h1 align="center">Analise e Desenvolviment de Sistemas - 2º periodo</h1>
+<h1 align="center">Analise e Desenvolviment de Sistemas - 1º periodo</h1>
 
 <div align="left" widht="100">
     <img align="right" src="../.github/catstello.png" width="325" alt="octodex-img" title="octodex">
