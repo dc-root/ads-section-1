@@ -34,8 +34,7 @@ void consultar(Voo* voos, int qtd_voos, TabelaRegistroPassagem* tabelaRegistroPa
     scanf("%d", &opcao);
 
     //trata opcao desejada
-    switch (opcao)
-    {
+    switch (opcao) {
         case POR_NUMERO_VOO:
             //leitura do numero do voo
             printf("Informe o numero do voo a ser pesquisado: ");
