@@ -26,15 +26,15 @@ tOrdemServico OS[NUM_OS];
 pOrdemServico pOS = OS;
 
 int countG=0;
+float somaValoresServicos=0.0, mediaValoreServico=0, valorServicoMaisCaro=0.0;
+char nomeClienteMaisCaro[50], dataEmissaoServicoMaisCaro[100], descricaoClienteMaisCaro[500];
 
 // DECLARANDO AS FUNÇÕES
 void cadastrarServico(char *nome, char *description);
-void registrarOrdemServico(float *soma_vs, char *nome_cliente_smc, float *valor_smc, char *data_smc, char *descricao_smc);
+void registrarOrdemServico();
 
 void main() {
   int optionMenu=0, countServico=0, countOrdemServico=0;
-  float somaValoresServicos=0.0, mediaValoreServico=0, valorServicoMaisCaro=0.0;
-  char nomeClienteMaisCaro[50], dataEmissaoServicoMaisCaro[100], descricaoClienteMaisCaro[500];
 
   while (countServico < NUM_SERVICOS) {
     // Menu
@@ -52,9 +52,9 @@ void main() {
 
   countG=countServico;
 
-  // sleep(2);
-  // printf("\nOK, Serviços cadastrado com sucesso!!\n");
-  // sleep(2);
+  sleep(2);
+  printf("\nOK, Serviços cadastrado com sucesso!!\n");
+  sleep(2);
 
   // Lenitura das OS
   while (countOrdemServico < NUM_OS) {
@@ -62,7 +62,7 @@ void main() {
     printf("\n\t1. Registrar Ordem de Serviço\n\t2. Sair\n\nEscolha uma das opções acima: ");
     scanf("%i%*c", &optionMenu);
     if (optionMenu == 1) {
-      registrarOrdemServico(&somaValoresServicos, nomeClienteMaisCaro, &valorServicoMaisCaro, dataEmissaoServicoMaisCaro, descricaoClienteMaisCaro);
+      registrarOrdemServico();
 
       countOrdemServico++;
       pOS++;
@@ -71,16 +71,20 @@ void main() {
     else;
   }
 
-  // Mostrando Resultado
-  printf("\n\n################################ INFORMATION ################################\n\n");
-  
-  printf("Media dos valores entre os serviços ordenados registrados: R$%.2f\n\n", mediaValoreServico);
   mediaValoreServico = somaValoresServicos / countOrdemServico;
 
-  printf("Cliente com maior oferta: \t%s\n", nomeClienteMaisCaro);
-  printf("Valor do serviço: \tR$%.2f\n", valorServicoMaisCaro);
-  printf("Descrição: \t%s\n", descricaoClienteMaisCaro);
-  printf("Data da solicitação: \t%s", dataEmissaoServicoMaisCaro);
+  sleep(2);
+
+  // Mostrando Resultado
+  printf("\n\n################################ INFORMAÇÕES ################################\n\n");
+  
+  printf("Media dos valores entre os serviços ordenados registrados: R$%.2f\n\n", mediaValoreServico);
+  
+  printf("CLIENTE MAIS CARO\n\n");
+  printf("CLIENTE COM MAIOR OFETTA:\t%s", nomeClienteMaisCaro);
+  printf("VALOR DO SERVIÇO:        \t\tR$%.2f\n", valorServicoMaisCaro);
+  printf("DESCRIÇÃO  DO SERVIÇO:   \t%s", descricaoClienteMaisCaro);
+  printf("DATA DA SOLICITAÇÃO:     \t%s", dataEmissaoServicoMaisCaro);
 
   printf("\n\n##############################################################################\n\n");
 }
@@ -98,7 +102,7 @@ void cadastrarServico(char *nome, char *description) {
   fgets(description, 500, stdin);
 }
 
-void registrarOrdemServico(float *soma_vs, char *nome_cliente_smc, float *valor_smc, char *data_smc, char *descricao_smc) {
+void registrarOrdemServico() {
   int opcaoServico;
 
   // Numero da OS
@@ -118,7 +122,9 @@ void registrarOrdemServico(float *soma_vs, char *nome_cliente_smc, float *valor_
   }
   printf("\nEscolha uma das opções de serviço acima: ");
   scanf("%i", &opcaoServico);
-  strcpy(pOS->servicoEmitido.nomeServico, vServicos[opcaoServico].nomeServico);
+
+  strcpy(pOS->servicoEmitido.nomeServico, vServicos[opcaoServico-1].nomeServico);
+  strcpy(pOS->servicoEmitido.descricaoServico, vServicos[opcaoServico-1].descricaoServico);
 
   // Leitura do valor do serviço
   printf("Digite o valor do serviço(R$): ");
@@ -129,13 +135,13 @@ void registrarOrdemServico(float *soma_vs, char *nome_cliente_smc, float *valor_
   fgets(pOS->nomeCliente, 50, stdin);
 
   // Soma valores
-  *soma_vs += pOS->valorServico;
+  somaValoresServicos += pOS->valorServico;
 
   // Cliente mais caro
-  if (*valor_smc < pOS->valorServico) {
-    strcpy(nome_cliente_smc, pOS->nomeCliente);
-    *valor_smc = pOS->valorServico;
-    strcpy(data_smc, pOS->dataEmissaoOrdemServico);
-    strcpy(descricao_smc, pOS->servicoEmitido.descricaoServico);
+  if (valorServicoMaisCaro < pOS->valorServico) {
+    strcpy(nomeClienteMaisCaro, pOS->nomeCliente);
+    valorServicoMaisCaro = pOS->valorServico;
+    strcpy(dataEmissaoServicoMaisCaro, pOS->dataEmissaoOrdemServico);
+    strcpy(descricaoClienteMaisCaro, pOS->servicoEmitido.descricaoServico);
   }
 }
