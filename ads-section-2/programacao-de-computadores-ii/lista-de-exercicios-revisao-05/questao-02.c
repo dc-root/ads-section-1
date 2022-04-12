@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 void main () {
-
   // declarando as variaveis e associando as aos seus respectivos ponteiros
   int numero_int = 100, *p_numero_int=&numero_int;
   float numero_real = 99.9, *p_numero_real=&numero_real;

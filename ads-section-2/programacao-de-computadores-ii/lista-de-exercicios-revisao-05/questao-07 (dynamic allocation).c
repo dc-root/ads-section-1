@@ -17,11 +17,10 @@ typedef struct {
   char dataEmissaoOrdemServico[100], nomeCliente[50];
   tServicos servicoEmitido;
   float valorServico;
-} tOrdemServico, *pOrdemServico;
+} *pOrdemServico;
 
+pOrdemServico pOS;
 tServicos vServicos[NUM_SERVICOS];
-tOrdemServico OS[NUM_OS];
-pOrdemServico pOS = OS;
 
 int countG=0;
 float somaValoresServicos=0.0, mediaValoreServico=0, valorServicoMaisCaro=0.0;
@@ -32,6 +31,12 @@ void cadastrarServico(char *nome, char *description);
 void registrarOrdemServico();
 
 void main() {
+  pOS = malloc(sizeof(pOrdemServico));
+  if (!pOS) {
+    printf("\nError na alocação de memoria!!");
+    exit(1);
+  }
+
   int optionMenu=0, countServico=0, countOrdemServico=0;
 
   while (countServico < NUM_SERVICOS) {
@@ -61,7 +66,6 @@ void main() {
     scanf("%i%*c", &optionMenu);
     if (optionMenu == 1) {
       registrarOrdemServico();
-
       countOrdemServico++;
       pOS++;
     } else if (optionMenu == 2)
@@ -85,6 +89,8 @@ void main() {
   printf("DATA DA SOLICITAÇÃO:     \t%s", dataEmissaoServicoMaisCaro);
 
   printf("\n\n##############################################################################\n\n");
+
+  free(pOS);
 }
 
 // DEFININDO AS FUNÇÕES
