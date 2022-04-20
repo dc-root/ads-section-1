@@ -2,5 +2,6 @@ logs
 *.log
 npm-debug.log
 .vscode
+.gitignore
 
 node_modules

@@ -25,11 +25,10 @@ typedef struct {
 
 FILE *File;
 tContacBook RegisterUser;
-unsigned short count=0;
 
 // Declarando Funções
 void registerContact();
-// void RemoveContact();
+void RemoveContact();
 // int searchContactByName();
 
 int main() {
@@ -44,6 +43,9 @@ int main() {
       // cadastrar contato
         registerContact();
         break;
+      case 2:
+        RemoveContact();
+        break;
     }
 
   return 0;
@@ -51,7 +53,7 @@ int main() {
 
 // Definindo funções
 void registerContact() {
-  Clear();
+  // Clear();
 
  // Lendo os dados do registro
   printf("Nome do contato: ");
@@ -63,31 +65,23 @@ void registerContact() {
   printf("Telefone: ");
   scanf("%d%*c", &RegisterUser.phoneNumber);
   
-  RegisterUser.id = count;
-  
   //  Gravando o registro no arquivo binario
-  if ((File = fopen("file.bin", "wb")) == NULL) {
+  if ((File = fopen("file.bin", "ab+")) == NULL) {
     perror("Falha ao abrir o arquivo!!");
     exit(1);
-  } else count++;
+  };
 
   fwrite(&RegisterUser, 1, sizeof(tContacBook), File);
   fclose(File);
 }
 
-// void RemoveContact() {
-//   if ((File = fopen("file.bin", "rb")) == NULL) {
-//     perror("Falha ao abrir o arquivo!!");
-//     exit(1);
-//   }
+void RemoveContact() {
+  if ((File = fopen("file.bin", "rb")) == NULL) {
+    perror("Erro ao abrir o arquivo!!");
+    exit(1);
+  }
 
-//   fseek(File, sizeof(tContacBook) * count, SEEK_SET);
+  fseek(File, 0, SEEK_SET);
 
-//   fread(&RegisterUser, 1, sizeof(tContacBook), File);
-
-//   for (int i=0; i<count; i++) {
-//     printf("\nName: %s", RegisterUser[i].name);
-//   }
-
-//   fclose(File);
-// }
+  printf(fread(&RegisterUser, sizeof(tContacBook), 1, File));
+}
