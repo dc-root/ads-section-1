@@ -35,9 +35,6 @@ int main() {
         // condicional ternario verificando se a verificação do caracter com a palavra retorna verdadeiro ou falso
          verify(&letter, string) ? NULL : count++;
 
-         printf("\ncomplete? %d\n", strncmp(string, stringView, tm));
-         printf("count: %d\n", count);
-
          // Verificando se a palavra esta completa
          if(strncmp(string, stringView, tm) == 0) {
             limpar();
