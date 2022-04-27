@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main () {
-    int var1, var2;
+    unsigned int var1, var2;
 
-    printf("Digite dois numeros\n\n");
+    printf("Digite dois numeros e saiba qual tem o maior endereço!!\n\n");
     
     printf("\t1º numero: ");
     scanf("%d", &var1);
@@ -12,9 +12,9 @@ int main () {
     scanf("%d", &var2);
 
     if(&var1 > &var2)
-        printf("\n\n%d: possui o maior endereco\nendereco var1: %d\nendereco var2: %d", var1, &var1, &var2);
+        printf("\n\n%d: possui o maior endereco\nendereco numero: %d\nendereco numero2: %d", var1, &var1, &var2);
     else if(&var2 > var1)
-        printf("\n\n%d: possui o maior endereco\nendereco var1: %d\nendereco var2: %d", var2, &var1, &var2);
+        printf("\n\n%d: possui o maior endereco\nendereco numero: %d\nendereco numero2: %d", var2, &var1, &var2);
 
     return 0;
 }
