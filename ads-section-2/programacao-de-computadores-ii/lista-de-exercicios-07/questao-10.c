@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     char *phrase, character;
     int countWord=0;
 
-    if ((fp = fopen("file.txt", "r")) == NULL) {
+    if ((fp = fopen("arquivo.txt", "r")) == NULL) {
         perror("Error opening file!");
         return 1;
     }
