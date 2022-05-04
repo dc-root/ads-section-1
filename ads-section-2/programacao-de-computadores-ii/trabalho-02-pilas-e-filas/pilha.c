@@ -3,94 +3,113 @@
 
 // PILHA ESTÁTICA - VETORES
 
-#define MAX 15
+#define MAX 5
 
 typedef struct{
-	int elementos[MAX]; // PILHA ESTÁTICA
-	int topo;
+	int elements[MAX]; // PILHA ESTÁTICA
+	int top;
 } TPilha;
 
 // CRIAR PILHA
-TPilha * criar_pilha(){
-	TPilha *ppilha;
+TPilha * criar_pilha() {
+	TPilha *pontPilha;
 
-	ppilha = calloc(1, sizeof(TPilha)); //ALOCAÇÃO DA MEMÓRIA
-	if(ppilha == NULL)
+	pontPilha = calloc(1, sizeof(TPilha)); //ALOCAÇÃO DA MEMÓRIA
+	if(pontPilha == NULL)
 		exit(1);
 
-	ppilha->topo = 0;
-
-	return ppilha;
+	pontPilha->top = 0;
+	return pontPilha;
 }
 
 // EMPILHAR ELEMENTO
-void empilhar(TPilha *ppilha, int valor){
-	int i = ppilha->topo;
+void empilhar(TPilha *pontPilha, int value) {
+    int i = pontPilha->top;
 
-	ppilha->elementos[i] = valor;
-	ppilha->topo = ppilha->topo + 1;
-
+    pontPilha->elements[i] = value;
+    pontPilha->top = pontPilha->top + 1;
 }
 
 // DESEMPILHAR ELEMENTO
-int desempilhar(TPilha *ppilha){
-	int i;
+int desempilhar(TPilha *pontPilha){
+    int i;
+    pontPilha->top = pontPilha->top - 1;
 
-	ppilha->topo = ppilha->topo - 1;
+    i = pontPilha->top;
 
-	i = ppilha->topo;
+    return pontPilha->elements[i];
+}
 
-	return ppilha->elementos[i];
+int mostrarElementos(TPilha *pontPilha) { // função para mostrar os elementos da pilha ✅
+    size_t tm = tamanho(pontPilha);
+
+    printf("\n");
+    for(int i=0; i < tm; i++) {
+        printf("%d\t", pontPilha->elements[i]);
+    }
+    printf("\n"); 
+
+    return 0;
 }
 
 // MENSURAR TAMANHO DA PILHA
-int tamanho(TPilha *ppilha){
-	return ppilha->topo;
+int tamanho(TPilha *pontPilha){
+	return pontPilha->top;
 }
 
 //DESTRUIR PILHA
-void destruir_pilha(TPilha *ppilha) {
-	free(ppilha);
+void destruir_pilha(TPilha *pontPilha) {
+	free(pontPilha);
 }
 
 int main(void) {
-  int op;
-  int valor;
-  int i ;
-  TPilha *ppilha;
+  int option, elementValue;
+  TPilha *pontPilha;
 
-  ppilha = criar_pilha();
+  pontPilha = criar_pilha();
 
   printf("\n------ PILHA ESTÁTICA -------");
 
-  do{
-      printf("\n 1 - Empilhar");
-      printf("\n 2 - Desempilhar");
+  do {
+      printf("\n 1 - Empilhar elemento");
+      printf("\n 2 - Desempilhar elemento");
       printf("\n 3 - Tamanho da pilha");
-      printf("\n 4 - Sair");
+      printf("\n 4 - Mostrar todos os elementos");
+      printf("\n 5 - Sair");
       printf("\n Digite a opção: ");
-      scanf("%d", &op);
+      scanf("%d", &option);
 
-      switch(op){
+      switch(option){
             case 1:
-                printf("\n Digite o valor: ");
-                scanf("%d", &valor);
-                empilhar(ppilha, valor);
-                break;
+                if (pontPilha->top != MAX) { // Implementado a verificação caso chegue ao limite da pilha ✅
+                    printf("\n Digite o valor: ");
+                    scanf("%d", &elementValue);
+                    empilhar(pontPilha, elementValue);
+                    break;
+                } else {
+                    perror("\n> Error adding element, check queue size\n"); // messagem de erro caso a pilha estiever cheia ✅
+                    exit(1);
+                }
             case 2:
-                valor = desempilhar(ppilha);
-                printf("\n Valor: %d \n", valor);
+                // if (pontPilha->elements == pontPilha->top) {
+
+                // }
+                elementValue = desempilhar(pontPilha);
+                printf("\n Valor: %d \n", elementValue);
                 break;
             case 3:
-                valor = tamanho(ppilha);
-                printf("\n Tamanho: %d\n", valor);
-
+                elementValue = tamanho(pontPilha);
+                printf("\n Tamanho: %d\n", elementValue);
+                break;
+            case 4:
+                mostrarElementos(pontPilha);
                 break;
       }
 
-  } while(op != 4);
+  } while(option != 5);
 
-  destruir_pilha(ppilha);
+
+  destruir_pilha(pontPilha);
 
   return 0;
 }
