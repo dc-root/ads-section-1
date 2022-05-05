@@ -7,16 +7,15 @@
 #define MAX 15
 
 typedef struct{
-	int elements[15];
+	int elements[MAX]; // PILHA ESTÁTICA
 	int top;
 } TPilha;
-
 
 // CRIAR PILHA
 TPilha * criar_pilha() {
 	TPilha *pontPilha;
 
-	pontPilha = calloc(1, sizeof(TPilha));
+	pontPilha = calloc(1, sizeof(TPilha)); //ALOCAÇÃO DA MEMÓRIA
 	if(pontPilha == NULL)
 		exit(1);
 
@@ -76,9 +75,6 @@ int main(void) {
   unsigned int elementValue;
   TPilha *pontPilha;
 
-  int *element = &pontPilha->elements;
-
-
   setlocale(LC_ALL, "");
 
   pontPilha = criar_pilha();
@@ -95,23 +91,23 @@ int main(void) {
       scanf("%hd", &option);
 
       switch(option){
-        case 1:
-            printf("\n Digite o valor: ");
-            scanf("%d", &elementValue);
-            empilhar(pontPilha, elementValue);
-            break;
-        case 2:
-            elementValue = desempilhar(pontPilha);
-            if (elementValue)
-                printf("\n\033[0;32mO elemento %d foi removido da pilha com sucesso!\033[0m\n", elementValue);
-            break;
-        case 3:
-            elementValue = tamanho(pontPilha);
-            printf("\n\033[0;32mNo momento a pilha contem %d elementos!\033[0m\n", elementValue);
-            break;
-        case 4:
-            mostrarElementos(pontPilha);
-            break;
+            case 1:
+                printf("\n Digite o valor: ");
+                scanf("%d", &elementValue);
+                empilhar(pontPilha, elementValue);
+                break;
+            case 2:
+                elementValue = desempilhar(pontPilha);
+                if (elementValue)
+                    printf("\n\033[0;32mO elemento %d foi removido da pilha com sucesso!\033[0m\n", elementValue);
+                break;
+            case 3:
+                elementValue = tamanho(pontPilha);
+                printf("\n\033[0;32mNo momento a pilha contem %d elementos!\033[0m\n", elementValue);
+                break;
+            case 4:
+                mostrarElementos(pontPilha);
+                break;
       }
 
   } while(option != 5);
