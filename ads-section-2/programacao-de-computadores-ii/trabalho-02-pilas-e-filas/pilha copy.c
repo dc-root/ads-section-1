@@ -91,23 +91,23 @@ int main(void) {
       scanf("%hd", &option);
 
       switch(option){
-            case 1:
-                printf("\n Digite o valor: ");
-                scanf("%d", &elementValue);
-                empilhar(pontPilha, elementValue);
-                break;
-            case 2:
-                elementValue = desempilhar(pontPilha);
-                if (elementValue)
-                    printf("\n\033[0;32mO elemento %d foi removido da pilha com sucesso!\033[0m\n", elementValue);
-                break;
-            case 3:
-                elementValue = tamanho(pontPilha);
-                printf("\n\033[0;32mNo momento a pilha contem %d elementos!\033[0m\n", elementValue);
-                break;
-            case 4:
-                mostrarElementos(pontPilha);
-                break;
+        case 1:
+            printf("\n Digite o valor: ");
+            scanf("%d", &elementValue);
+            empilhar(pontPilha, elementValue);
+            break;
+        case 2:
+            elementValue = desempilhar(pontPilha);
+            if (elementValue)
+                printf("\n\033[0;32mO elemento %d foi removido da pilha com sucesso!\033[0m\n", elementValue);
+            break;
+        case 3:
+            elementValue = tamanho(pontPilha);
+            printf("\n\033[0;32mNo momento a pilha contem %d elementos!\033[0m\n", elementValue);
+            break;
+        case 4:
+            mostrarElementos(pontPilha);
+            break;
       }
 
   } while(option != 5);

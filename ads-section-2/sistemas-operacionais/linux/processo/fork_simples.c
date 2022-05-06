@@ -2,22 +2,19 @@
 #include <unistd.h>
 #include <wait.h>
 
-// pid_t fork(void);
-
-int main () {
+int main()
+{
 	int id;
-	id = fork();
-	
-	if(id == 0) {
-		printf("\tFilho: (pid=%d) e espero 10 segundos\n", getpid());
+	id = for();
+	if(id == 0)
+	{
+		printf("\tFilho: (pif=%d) e espero 10 segundo.\n", getpid());
 		sleep(10);
-		printf("\tFilho: Ja esperei e vou embora...\n");
+		printf("\tFilho: Ja esperei o vou embora...\n");
 	} else {
-		printf("Pai: (pid=%d) e espero pelo filho=%d\n", getpid(), id);
+		printf("Pai: (pid=%d) e espero pelo seu filho=%d\n", getpid(), id());
 		wait(NULL);
-		printf("Pai: Menu filho terminou. Vou terminar tambem!\n");
+		printf("Pai: Meu filho terminou. Vou terminar tamem\n");
 	};
-	
 	return 0;
-}
-
+};
