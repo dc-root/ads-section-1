@@ -76,9 +76,6 @@ int main(void) {
   unsigned int elementValue;
   TPilha *pontPilha;
 
-  int *element = &pontPilha->elements;
-
-
   setlocale(LC_ALL, "");
 
   pontPilha = criar_pilha();

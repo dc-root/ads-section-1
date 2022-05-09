@@ -7,15 +7,16 @@
 #define MAX 15
 
 typedef struct{
-	int elements[MAX]; // PILHA ESTÁTICA
+	int elements[15];
 	int top;
 } TPilha;
+
 
 // CRIAR PILHA
 TPilha * criar_pilha() {
 	TPilha *pontPilha;
 
-	pontPilha = calloc(1, sizeof(TPilha)); //ALOCAÇÃO DA MEMÓRIA
+	pontPilha = calloc(1, sizeof(TPilha));
 	if(pontPilha == NULL)
 		exit(1);
 
