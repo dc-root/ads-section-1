@@ -60,49 +60,49 @@ Veja 'git help git' para uma visão geral do sistema.
 ## Principais comandos de porcela
    | Comand | Description |
    | --- | --- |
-   | `add` 				           | Adiciona o conteúdo do arquivo ao índice                                                   |
-   | `am` 					           | Aplicar uma série de patches de uma caixa de correio                                       |
-   | `archive` 			           | Cria um arquivo de arquivos de uma árvore nomeada                                          |
-   | `bisect` 			           | Use a busca binária para encontrar o commit que introduziu um bug                          |
-   | `branch` 			           | Listar, criar ou excluir branches                                                          |
-   | `bundle` 			           | Mover objetos e referências por arquivo                                                    |
-   | `checkout` 	   	           | Alternar ramificações ou restaurar arquivos da árvore de trabalho                          |
-   | `cherry-pick`                | Aplicar as alterações introduzidas por alguns commits existentes                           |
-   | `citool` 			           | Alternativa gráfica para git-commit                                                        |
-   | `clean` 				           | Remove arquivos não rastreados da árvore de trabalho                                       |
-   | `clone` 				           | Clone um repositório em um novo diretório                                                  |
-   | `commit` 			           | Grava as alterações no repositório                                                         |
-   | `describe` 			           | Dê a um objeto um nome legível por humanos com base em uma referência disponível           |
-   | `diff` 				           | Mostra as mudanças entre commits, commit e árvore de trabalho, etc                         |
-   | `fetch` 			              | Baixar objetos e referências de outro repositório                                          |
-   | `format-patch` 	           | Preparar patches para envio por e-mail                                                     |
-   | `gc` 					           | Limpe arquivos desnecessários e otimize o repositório local                                |
-   | `gitk` 				           | O navegador do repositório Git                                                             |
-   | `grep` 				           | Imprime linhas que correspondem a um padrão                                                |
-   | `gui` 				           | Uma interface gráfica portátil para Git                                                    |
-   | `init` 				           | Cria um repositório Git vazio ou reinicializa um existente                                 |
-   | `log` 				           | Mostrar logs de commit                                                                     |
-   | `maintenance` 		           | Execute tarefas para otimizar os dados do repositório Git                                  |
-   | `merge` 				           | Junte dois ou mais históricos de desenvolvimento                                           |
-   | `mv` 					           | Move ou renomeia um arquivo, um diretório ou um link simbólico                             |
-   | `notes` 				           | Adicionar ou inspecionar notas de objetos                                                  |
-   | `pull` 				           | Busca de e integrar com outro repositório ou uma ramificação local                         |
-   | `push` 				           | Atualizar referências remotas junto com objetos associados                                 |
-   | `range-diff` 		           | Comparar dois intervalos de confirmação (por exemplo, duas versões de uma ramificação)     |
-   | `rebase` 			           | Reaplicar commits em cima de outra dica base                                               |
-   | `reset` 				           | Restaura o HEAD atual para o estado especificado                                           |
-   | `restore`	 		           | Restaurar arquivos da árvore de trabalho                                                   |
-   | `revert`	 			           | Reverter alguns commits existentes                                                         | 
-   | `rm` 					           | Remove arquivos da árvore de trabalho e do índice                                          |
-   | `shortlog` 			           | Resumir a saída 'git log'                                                                  |
-   | `show` 				           | Mostra vários tipos de objetos                                                             |
-   | `sparse-checkout`            | Inicializa e modifica o sparse-checkout                                                    |
-   | `stash` 				           | Esconda as alterações em um diretório de trabalho sujo                                     |
-   | `status` 			           | Mostra o status da árvore de trabalho                                                      |
-   | `submodule` 		           | Inicializar, atualizar ou inspecionar submódulos                                           |
-   | `mudar`			              | Mudar ramos                                                                                |
-   | `tag` 				           | Criar, listar, excluir ou verificar um objeto de tag assinado com GPG                      |
-   | `worktree` 			           | Gerenciar várias árvores de trabalho                                                       |
+   | `add` 			| Adiciona o conteúdo do arquivo ao índice                                                   |
+   | `am` 			| Aplicar uma série de patches de uma caixa de correio                                       |
+   | `archive` 			| Cria um arquivo de arquivos de uma árvore nomeada                                          |
+   | `bisect` 			| Use a busca binária para encontrar o commit que introduziu um bug                          |
+   | `branch` 			| Listar, criar ou excluir branches                                                          |
+   | `bundle` 			| Mover objetos e referências por arquivo                                                    |
+   | `checkout` 	   	| Alternar ramificações ou restaurar arquivos da árvore de trabalho                          |
+   | `cherry-pick`              | Aplicar as alterações introduzidas por alguns commits existentes                           |
+   | `citool` 			| Alternativa gráfica para git-commit                                                        |
+   | `clean` 			| Remove arquivos não rastreados da árvore de trabalho                                       |
+   | `clone` 			| Clone um repositório em um novo diretório                                                  |
+   | `commit` 			| Grava as alterações no repositório                                                         |
+   | `describe` 		| Dê a um objeto um nome legível por humanos com base em uma referência disponível           |
+   | `diff` 			| Mostra as mudanças entre commits, commit e árvore de trabalho, etc                         |
+   | `fetch` 			| Baixar objetos e referências de outro repositório                                          |
+   | `format-patch` 	        | Preparar patches para envio por e-mail                                                     |
+   | `gc` 			| Limpe arquivos desnecessários e otimize o repositório local                                |
+   | `gitk` 			| O navegador do repositório Git                                                             |
+   | `grep` 			| Imprime linhas que correspondem a um padrão                                                |
+   | `gui` 			| Uma interface gráfica portátil para Git                                                    |
+   | `init` 			| Cria um repositório Git vazio ou reinicializa um existente                                 |
+   | `log` 			| Mostrar logs de commit                                                                     |
+   | `maintenance` 		| Execute tarefas para otimizar os dados do repositório Git                                  |
+   | `merge` 			| Junte dois ou mais históricos de desenvolvimento                                           |
+   | `mv` 			| Move ou renomeia um arquivo, um diretório ou um link simbólico                             |
+   | `notes` 			| Adicionar ou inspecionar notas de objetos                                                  |
+   | `pull` 			| Busca de e integrar com outro repositório ou uma ramificação local                         |
+   | `push` 			| Atualizar referências remotas junto com objetos associados                                 |
+   | `range-diff` 		| Comparar dois intervalos de confirmação (por exemplo, duas versões de uma ramificação)     |
+   | `rebase` 			| Reaplicar commits em cima de outra dica base                                               |
+   | `reset` 			| Restaura o HEAD atual para o estado especificado                                           |
+   | `restore`	 		| Restaurar arquivos da árvore de trabalho                                                   |
+   | `revert`	 		| Reverter alguns commits existentes                                                         |
+   | `rm` 			| Remove arquivos da árvore de trabalho e do índice                                          |
+   | `shortlog` 		| Resumir a saída 'git log'                                                                  |
+   | `show` 			| Mostra vários tipos de objetos                                                             |
+   | `sparse-checkout`          | Inicializa e modifica o sparse-checkout                                                    |
+   | `stash` 			| Esconda as alterações em um diretório de trabalho sujo                                     |
+   | `status` 			| Mostra o status da árvore de trabalho                                                      |
+   | `submodule` 		| Inicializar, atualizar ou inspecionar submódulos                                           |
+   | `mudar`			| Mudar ramos                                                                                |
+   | `tag` 			| Criar, listar, excluir ou verificar um objeto de tag assinado com GPG                      |
+   | `worktree` 		| Gerenciar várias árvores de trabalho                                                       |
 
 ### Comandos Auxiliares / Manipuladores
    | Comand | Description |
@@ -152,7 +152,7 @@ Veja 'git help git' para uma visão geral do sistema.
    | `send-email           `|Envie uma coleção de patches como e-mails|
    | `svn                  `|Operação bidirecional entre um repositório Subversion e Git|
 
-### Comandos/manipuladores de baixo nível
+### Comandos/manipuladores de baixo nivel
    | Comand | Description |
    | --- | --- |
    | `apply               `| Aplicar um patch aos arquivos e/ou ao índice|
@@ -171,13 +171,13 @@ Veja 'git help git' para uma visão geral do sistema.
    | `read-tree           `| Lê as informações da árvore no índice|
    | `symbolic-ref        `| Ler, modificar e excluir referências simbólicas|
    | `unpack-objects      `| Descompacte objetos de um arquivo compactado|
-   | `update-index        `| Registre o conteúdo do arquivo na árvore de trabalho no índice|
+   | `update-index        `| Registre o conteúdo do arquivo na árvore de trabalho no ínindice|
    | `update-ref          `| Atualize o nome do objeto armazenado em uma referência com segurança|
    | `write-tree          `| Crie um objeto de árvore a partir do índice atual|
 
-   | --- | --- |
-### Comandos/Interrogadores de Baixo Nível
+### Comandos/Interrogadores de Baixo Nivel
    | Comand | Description |
+   | --- | --- |
    |`cat-file            `| Fornecer conteúdo ou informações de tipo e tamanho para objetos de repositório|
    |`cherry              `| Encontrar commits ainda a serem aplicados ao upstream|
    |`diff-files          `| Compara arquivos na árvore de trabalho e o índice|
@@ -200,7 +200,7 @@ Veja 'git help git' para uma visão geral do sistema.
    |`var                 `| Mostrar uma variável lógica do Git|
    |`verify-pack         `| Validar arquivos compactados do Git|
 
-### Comandos de baixo nível / Sincronização de repositórios
+### Comandos de baixo nivel / Sincronização de repositórios
    | Comand | Description |
    | --- | --- |
    |`daemon`               |Um servidor realmente simples para repositórios Git|
@@ -209,7 +209,7 @@ Veja 'git help git' para uma visão geral do sistema.
    |`send-pack`            |Envie objetos pelo protocolo Git para outro repositório|
    |`update-server-info`   |Atualize o arquivo de informações auxiliares para ajudar os servidores burros|
 
-### Comandos de baixo nível/auxiliares internos
+### Comandos de baixo nivel/auxiliares internos
    | Comand | Description |
    | --- | --- |
    | `check-attr           `|Exibir informações de gitattributes|
@@ -222,7 +222,7 @@ Veja 'git help git' para uma visão geral do sistema.
    | `credential-store     `|Auxiliar para armazenar credenciais em disco|
    | `fmt-merge-msg        `|Produzir uma mensagem de confirmação de mesclagem|
    | `interpret-trailers   `|Adicionar ou analisar informações estruturadas em mensagens de confirmação|
-   | `mailinfo             `|Extrai patch e autoria de uma única mensagem de e-mail|
+   | `mailinfo             `|Extrai patch e autoria de uma unica mensagem de e-mail|
    | `mailsplit            `|Simples programa divisor de mbox UNIX|
    | `merge-one-file       `|O programa auxiliar padrão para usar com git-merge-index|
    | `patch-id             `|Calcular ID exclusivo para um patch|
