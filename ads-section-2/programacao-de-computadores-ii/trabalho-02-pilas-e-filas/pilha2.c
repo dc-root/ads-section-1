@@ -4,13 +4,12 @@
 
 // PILHA ESTÁTICA - VETORES
 
-#define MAX 3
+#define MAX 15
 
 typedef struct no {
-	int elements[MAX];
-	int *pontVetor;
-
-    int countPointVetor;
+    int elements[MAX],
+	*pontVetor,
+	countPointVetor;
 } typeStack, *PontTypeStack;
 
 
