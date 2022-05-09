@@ -6,17 +6,16 @@
 
 #define MAX 15
 
-typedef struct{
-	int elements[15];
+typedef struct {
+	int elements[MAX];
+
 	int top;
-} TPilha;
+} typeStack, *PontTypeStack;
 
 
 // CRIAR PILHA
-TPilha * criar_pilha() {
-	TPilha *pontPilha;
-
-	pontPilha = calloc(1, sizeof(TPilha));
+typeStack * criar_pilha() {
+	PontTypeStack pontPilha = calloc(1, sizeof(typeStack));
 	if(pontPilha == NULL)
 		exit(1);
 
@@ -25,41 +24,42 @@ TPilha * criar_pilha() {
 }
 
 // MENSURAR TAMANHO DA PILHA
-int tamanho(TPilha *pontPilha){
-	return pontPilha->top;
+int SizeStack(PontTypeStack pP){
+	return pP->top;
 }
 
 // EMPILHAR ELEMENTO
-void empilhar(TPilha *pontPilha, int value) {
-    if (pontPilha->top != MAX) { // Implementado a função a verificação caso chegue ao limite da pilha ✅
-        int i = pontPilha->top;
-        pontPilha->elements[i] = value;
-        pontPilha->top = pontPilha->top + 1;
-        printf("\n\033[5;32mElemento %d, foi empilhado com sucesso!\033[0m\n", value);
+void StackUP(PontTypeStack pP, int value) {
+    if (pP->top != MAX) { // Implementado a função a verificação caso chegue ao limite da pilha ✅
+
+        int i = pP->top;
+        pP->elements[i] = value;
+        pP->top = pP->top + 1;
+        printf("\n\033[0;32mElemento %d, foi empilhado com sucesso!\033[0m\n", value);
     } else {
-        perror("\n\033[5;31m > Error adding element, check queue size \033[0m\n\n"); // messagem de erro caso a pilha estiever cheia ✅
+        perror("\n\033[0;31m > Error adding element, check queue size \033[0m\n\n"); // messagem de erro caso a pilha estiever cheia ✅
     }
 }
 
 // DESEMPILHAR ELEMENTO
-int desempilhar(TPilha *pontPilha) { 
-    if (pontPilha->top == 0) { // Verificação para quando a pilha estiver vazia com a mesagem de alerta ✅
+int Unstack(PontTypeStack pP) { 
+    if (pP->top == 0) { // Verificação para quando a pilha estiver vazia com a mesagem de alerta ✅
         perror("\n\033[1;32m > Warning, no, the stack doesn't have any more elements to be removed!\033[0m\n");
         return 0;
     }
 
-    pontPilha->top = pontPilha->top - 1;
-    short int i = pontPilha->top;
-    return pontPilha->elements[i];
+    pP->top = pP->top - 1;
+    short int i = pP->top;
+    return pP->elements[i];
 }
 
 // MOSTRAR ELEMENTO EMPILHADOS
-int mostrarElementos(TPilha *pontPilha) { // função para mostrar os elementos da pilha ✅
-    size_t tm = tamanho(pontPilha);
+int ShowElements(PontTypeStack pP) { // função para mostrar os elementos da pilha ✅
+    size_t tm = SizeStack(pP);
 
     printf("\n\033[0;35m⬇ inicio da pilha ⬇\033[0m\n\n");
     for(int i=0; i < tm; i++) {
-        printf("\033[1;35m%d\033[0m\n", pontPilha->elements[i]);
+        printf("\033[1;35m%d\033[0m\n", pP->elements[i]);
     }
     printf("\n\033[0;35m⬆ final da pilha ⬆\033[0m\n"); 
 
@@ -67,18 +67,18 @@ int mostrarElementos(TPilha *pontPilha) { // função para mostrar os elementos 
 }
 
 //DESTRUIR PILHA
-void destruir_pilha(TPilha *pontPilha) {
-	free(pontPilha);
+void UndoStack(PontTypeStack pP) {
+	free(pP);
 }
 
 int main(void) {
-  short option;
-  unsigned int elementValue;
-  TPilha *pontPilha;
-
   setlocale(LC_ALL, "");
 
-  pontPilha = criar_pilha();
+  short option;
+  unsigned int elementValue;
+
+  PontTypeStack pointTypeStack = criar_pilha();
+
 
   do {
       printf("\n------- PILHA ESTÁTICA -------\n");
@@ -95,24 +95,24 @@ int main(void) {
         case 1:
             printf("\n Digite o valor: ");
             scanf("%d", &elementValue);
-            empilhar(pontPilha, elementValue);
+            StackUP(pointTypeStack, elementValue);
             break;
         case 2:
-            elementValue = desempilhar(pontPilha);
+            elementValue = Unstack(pointTypeStack);
             if (elementValue)
                 printf("\n\033[0;32mO elemento %d foi removido da pilha com sucesso!\033[0m\n", elementValue);
             break;
         case 3:
-            elementValue = tamanho(pontPilha);
+            elementValue = SizeStack(pointTypeStack);
             printf("\n\033[0;32mNo momento a pilha contem %d elementos!\033[0m\n", elementValue);
             break;
         case 4:
-            mostrarElementos(pontPilha);
+            ShowElements(pointTypeStack);
             break;
       }
 
   } while(option != 5);
 
-  destruir_pilha(pontPilha);
+  UndoStack(pointTypeStack);
   return 0;
 }
