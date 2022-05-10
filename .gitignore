@@ -5,3 +5,5 @@ npm-debug.log
 .gitignore
 
 node_modules
+
+*.o
