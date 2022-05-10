@@ -6,7 +6,7 @@
 
 #define MAX 15
 
-typedef struct no {
+typedef struct {
     int elements[MAX],
 	*pontVetor,
 	countPointVetor;
@@ -90,7 +90,7 @@ int main(void) {
   PontTypeStack pointTypeStack = CreateStack();
 
   do {
-      printf("\n------- PILHA ESTÁTICA -------\n");
+      printf("\n----------- PILHAS ------------\n");
 
       printf("\n 1 - Empilhar elemento");
       printf("\n 2 - Desempilhar elemento");
