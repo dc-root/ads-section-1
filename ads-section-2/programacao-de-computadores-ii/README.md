@@ -17,8 +17,6 @@ int main () {
 
 <br>
 
-<footer align="center">
-    <a href="https://drive.google.com/drive/folders/1RqrSm_Y7Qj4vGpOy1rEj7nw-5vFpSeHX66sJB25qCOx8SsrMW82IDAYYoaLklQIMlcdLMLkC?usp=sharing" align="center" target="_blank">
-        <img src="../../.github/classroom.png" width="100" align="center">
-    </a>
+<footer align="start">
+    <img src="../../.github/classroom.png" width="100" align="start">
 </footer>
