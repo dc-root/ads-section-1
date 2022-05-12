@@ -15,7 +15,7 @@
 typedef struct {
     char type[3];
     int line, column, colorVariance;
-    
+
 } tPGM, *tPPGM;
 
 // FUNÇÕES
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 
     fclose(pgmInput);
 
-    // Lendo os valores da matriz
+    // Lendo os valores da matriz | logica do calculo da mediana deve ser armazenado em aruivo de biblioteca a parte
     // [...]
 
     free(pontTypeStructPGM);
