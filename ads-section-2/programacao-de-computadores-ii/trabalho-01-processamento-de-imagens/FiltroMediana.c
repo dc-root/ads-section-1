@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
     openEndVerifyFile(&pgmInput, (argv[2] ? argv[2] : argv[1]), "r");
 
-    // Lendo cada elemento do cabeçalho do arquiva da imagem
+    // Lendo cada elemento do cabeçalho do arquivo
     fscanf(pgmInput, "%s %d %d %d",
             pontTypeStructPGM->type,
             &pontTypeStructPGM->column,
