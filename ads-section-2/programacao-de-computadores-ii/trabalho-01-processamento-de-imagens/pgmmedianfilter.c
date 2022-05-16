@@ -10,6 +10,15 @@
     -i -->  Imagem de imput(a imagem a ser modificada).
 */
 
+// FINS de TESTEs
+#define typeof(var) _Generic( (var),\
+char: "Char",\
+int: "Integer",\
+float: "Float",\
+char *: "String",\
+void *: "Pointer",\
+default: "Undefined")
+
 // STRUCT PGM
 typedef struct {
     char type[3];
@@ -24,11 +33,10 @@ int main(int argc, char *argv[]) {
     FILE *pgmInput;
     tPPGM pontTypeStructPGM = calloc(1, sizeof(tPGM));
 
-    unsigned short int mask=3; // mascara padrão // para calculo da mediana
-    unsigned short int matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz
-
     // Leitura do arquivo
     openEndVerifyFile(&pgmInput, (argv[2] ? argv[2] : argv[1]), "r");
+
+    unsigned short int mask=3; // mascara padrão para calculo da mediana
 
     // Verificação da mascara
     unsigned short flagMaskN = strtol(argv[1], NULL, 10);
@@ -40,8 +48,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    // unsigned short int matrizScanColorGrid[mask][mask]; // para calculo da mediana
-
     // Lendo cada elemento do cabeçalho do arquivo
     fscanf(pgmInput, "%s %hd %hd %hd",
             pontTypeStructPGM->type,
@@ -49,6 +55,9 @@ int main(int argc, char *argv[]) {
             &pontTypeStructPGM->line,
             &pontTypeStructPGM->colorVariance
     );
+
+    unsigned short int matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz do arquivo de input
+    unsigned short int matrizScanColorGrid[mask][mask]; // matriz para calculo da mediana
 
     // Lendo o corpo do arquivo (matriz)
     for(int i=0; i<pontTypeStructPGM->line; i++) {
@@ -70,34 +79,35 @@ int main(int argc, char *argv[]) {
     //                     strrchr((argv[2] ? argv[2] : argv[1]), '/')+1
     //                     :
     //                     (argv[2] ? argv[2] : argv[1]);
-    // strcat(prefix, fileName);
-    // size_t tm = strlen(prefix);
-    // printf("\nsize prefix: %d\n", tm);
+    // strcat(prefix, fileName); // concatena o prefixo com o nome
+    // size_t tm = strlen(prefix); // coleta o tamanho do prefix+fileName
+    // printf("\nprefix: %s\n", typeof(prefix)); // String
     // char outputFileName[tm];
-    // strcpy(outputFileName, prefix);
+    // strcpy(outputFileName, prefix); // copo o valor de prefix( prefix+fileName ) para a variavel outputFileName
+    // printf("outputFileName: %s\n", typeof(outputFileName)); // String
 
     // Novo arquivo de saida
     FILE *pgmOutput;
     openEndVerifyFile(&pgmOutput, outputFileName, "w");
 
     // Escrevendo cada elemento do cabeçalho no arquivo
-    fprintf(pgmInput, "%s\n%hd %hd\n%hd\n",
-            pontTypeStructPGM->type,
-            pontTypeStructPGM->column,
-            pontTypeStructPGM->line,
-            pontTypeStructPGM->colorVariance
-    );
+    // fprintf(pgmInput, "%s\n%hd %hd\n%hd\n",
+    //         pontTypeStructPGM->type,
+    //         pontTypeStructPGM->column,
+    //         pontTypeStructPGM->line,
+    //         pontTypeStructPGM->colorVariance
+    // );
 
     // Escrevendo o corpo do arquivo (matriz)
+    // for (int x=0; x<2) {
+        
+    // }
     for(int i=0; i<pontTypeStructPGM->line; i++) {
         for(int j=0; j<pontTypeStructPGM->column; j++) {
             fprintf(pgmOutput, "%hd ", matrizColorGrid[i][j]);
 
         } fprintf(pgmOutput, "\n");
     }
-
-    // logica do calculo da mediana deve ser armazenado em arquivo de biblioteca a parte
-    // [...]
 
     free(pontTypeStructPGM);
     return 0;
