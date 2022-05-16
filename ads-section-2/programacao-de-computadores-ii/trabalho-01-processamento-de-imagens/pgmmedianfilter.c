@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     FILE *pgmInput;
     tPPGM pontTypeStructPGM = calloc(1, sizeof(tPGM));
 
-    unsigned short int mask=3; // mascara padrão
+    unsigned short int mask=3; // mascara padrão // para calculo da mediana
     unsigned short int matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz
 
     // Leitura do arquivo
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    unsigned short int matrizScanColorGrid[mask][mask];
+    // unsigned short int matrizScanColorGrid[mask][mask]; // para calculo da mediana
 
     // Lendo cada elemento do cabeçalho do arquivo
     fscanf(pgmInput, "%s %hd %hd %hd",
@@ -85,7 +85,8 @@ int main(int argc, char *argv[]) {
             pontTypeStructPGM->type,
             pontTypeStructPGM->column,
             pontTypeStructPGM->line,
-            pontTypeStructPGM->colorVariance);
+            pontTypeStructPGM->colorVariance
+    );
 
     // Escrevendo o corpo do arquivo (matriz)
     for(int i=0; i<pontTypeStructPGM->line; i++) {
@@ -95,7 +96,7 @@ int main(int argc, char *argv[]) {
         } fprintf(pgmOutput, "\n");
     }
 
-    // logica do calculo da mediana deve ser armazenado em aruivo de biblioteca a parte
+    // logica do calculo da mediana deve ser armazenado em arquivo de biblioteca a parte
     // [...]
 
     free(pontTypeStructPGM);
