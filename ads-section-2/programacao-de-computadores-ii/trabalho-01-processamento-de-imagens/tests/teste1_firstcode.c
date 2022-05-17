@@ -18,24 +18,16 @@ typedef struct PGMImage {
  
 // Function to ignore any comments
 // in file
-void ignoreComments(FILE* fp)
-{
+void ignoreComments(FILE* fp) {
     int ch;
     char line[100];
  
-    // Ignore any blank lines
-    while ((ch = fgetc(fp)) != EOF
-           && isspace(ch))
-        ;
+    while ((ch = fgetc(fp)) != EOF && isspace(ch));
  
-    // Recursively ignore comments
-    // in a PGM image commented lines
-    // start with a '#'
     if (ch == '#') {
         fgets(line, sizeof(line), fp);
         ignoreComments(fp);
-    }
-    else
+    } else
         fseek(fp, -1, SEEK_CUR);
 }
  

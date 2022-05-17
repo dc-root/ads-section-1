@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
+// #include "main.h" // Header File
+
 int toCompare(const void *p1, const void *p2);
 
-void ImageProcessingFunction(int **matriz, const short line, const short column, unsigned short mask) {
+int ImageProcessingFunction(short int (**matriz), short int line, short int column, unsigned short mask) {
 	int matrizScanning[mask][mask];
-	
 	int maskCalc = (int) (mask/2);
 
 	// percorrendo a matriz 
@@ -27,6 +28,8 @@ void ImageProcessingFunction(int **matriz, const short line, const short column,
 			matriz[a + (mask/2)][b + (mask/2)] = matrizScanning[(mask/2)][(mask/2)];
 		}
 	}
+
+	return 0;
 }
 
 // função de comparação, passada como argumento a qsort()

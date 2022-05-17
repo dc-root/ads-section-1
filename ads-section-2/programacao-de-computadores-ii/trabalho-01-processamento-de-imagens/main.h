@@ -9,11 +9,8 @@ typedef struct {
     short int line, column, colorVariance;
 } tPGM, *tPPGM;
 
-
 // DECLARAÇÃO DAS FUNÇÕES
 void openEndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
 void hError( char messageError[], _Bool man);
-
-void ImageProcessingFunction(int **matriz, const short line, const short column, unsigned short mask);
-
+int toCompare(const void *p1, const void *p2);
 #endif
