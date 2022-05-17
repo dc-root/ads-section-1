@@ -3,31 +3,14 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "main.h" // Header File
+
 // pgmmediana -m N -i input
 /*
     pgmmediana --> nome do executavel.
     -m --> O tamanho da máscara é um inteiro positivo ímpar, caso não seja informado, o valor default é 3, para uma máscara de 3×3 pixels.
     -i -->  Imagem de imput(a imagem a ser modificada).
 */
-
-// FINS de TESTEs
-#define typeof(var) _Generic( (var),\
-char: "Char",\
-int: "Integer",\
-float: "Float",\
-char *: "String",\
-void *: "Pointer",\
-default: "Undefined")
-
-// STRUCT PGM
-typedef struct {
-    char type[3];
-    short int line, column, colorVariance;
-} tPGM, *tPPGM;
-
-// DECLARANDO AS FUNÇÕES
-void openEndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
-void hError( char messageError[], _Bool man);
 
 int main(int argc, char *argv[]) {
     FILE *pgmInput;
@@ -38,7 +21,7 @@ int main(int argc, char *argv[]) {
 
     unsigned short int mask=3; // mascara padrão para calculo da mediana
 
-    // Verificação da mascara
+    // Verificação da mascara | ARQUIVO A PARTE (cmdHandlingFunction.c)
     unsigned short flagMaskN = strtol(argv[1], NULL, 10);
     if(argv[2] && (flagMaskN > 0) && (flagMaskN % 2) > 0)
         mask = flagMaskN;
@@ -56,59 +39,52 @@ int main(int argc, char *argv[]) {
             &pontTypeStructPGM->colorVariance
     );
 
-    unsigned short int matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz do arquivo de input
-    unsigned short int matrizScanColorGrid[mask][mask]; // matriz para calculo da mediana
-
     // Lendo o corpo do arquivo (matriz)
+    unsigned short int matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz do arquivo de input
+ 
     for(int i=0; i<pontTypeStructPGM->line; i++) {
         for(int j=0; j<pontTypeStructPGM->column; j++) {
             fscanf(pgmInput, "%hd", &matrizColorGrid[i][j]);
-            printf("%hd  ", matrizColorGrid[i][j]);
-
-        } fscanf(pgmInput, "\n");
-        printf("\n");
+        }
     }
 
     fclose(pgmInput);
     
-    // validações e formatações necessárias para o nome do arquivo de saida(fileNameOutput)
-    char outputFileName[] = "output_img.pgm";
-    // char prefix[] = "output-";
-    // char *fileName;
-    // fileName = strstr((argv[2] ? argv[2] : argv[1]), "/") != NULL ?
-    //                     strrchr((argv[2] ? argv[2] : argv[1]), '/')+1
-    //                     :
-    //                     (argv[2] ? argv[2] : argv[1]);
-    // strcat(prefix, fileName); // concatena o prefixo com o nome
-    // size_t tm = strlen(prefix); // coleta o tamanho do prefix+fileName
-    // printf("\nprefix: %s\n", typeof(prefix)); // String
-    // char outputFileName[tm];
-    // strcpy(outputFileName, prefix); // copo o valor de prefix( prefix+fileName ) para a variavel outputFileName
-    // printf("outputFileName: %s\n", typeof(outputFileName)); // String
+    // validações e formatações necessárias para o nome do arquivo de saida(fileNameOutput) | ARQUIVO A PARTE (fileAccessFunction.c)
+    char outputFileName[100] = "output-";
+    char *fileName;
+    fileName = strstr((argv[2] ? argv[2] : argv[1]), "/") != NULL ?
+                        strrchr((argv[2] ? argv[2] : argv[1]), '/')+1
+                        :
+                        (argv[2] ? argv[2] : argv[1]);
+    strcat(outputFileName, fileName);
 
     // Novo arquivo de saida
     FILE *pgmOutput;
     openEndVerifyFile(&pgmOutput, outputFileName, "w");
 
     // Escrevendo cada elemento do cabeçalho no arquivo
-    // fprintf(pgmInput, "%s\n%hd %hd\n%hd\n",
-    //         pontTypeStructPGM->type,
-    //         pontTypeStructPGM->column,
-    //         pontTypeStructPGM->line,
-    //         pontTypeStructPGM->colorVariance
-    // );
+    fprintf(pgmInput, "%s\n%hd %hd\n%hd\n",
+            pontTypeStructPGM->type,
+            pontTypeStructPGM->column,
+            pontTypeStructPGM->line,
+            pontTypeStructPGM->colorVariance
+    );
 
     // Escrevendo o corpo do arquivo (matriz)
-    // for (int x=0; x<2) {
-        
-    // }
     for(int i=0; i<pontTypeStructPGM->line; i++) {
         for(int j=0; j<pontTypeStructPGM->column; j++) {
             fprintf(pgmOutput, "%hd ", matrizColorGrid[i][j]);
 
         } fprintf(pgmOutput, "\n");
     }
+    
+    ImageProcessingFunction(matrizColorGrid,
+                            pontTypeStructPGM->line,
+                            pontTypeStructPGM->column,
+                            mask); // aplicando o filtro na imagem | ARQUIVO A PARTE (imageProcessingFunction.c)
 
+    fclose(pgmOutput);
     free(pontTypeStructPGM);
     return 0;
 }

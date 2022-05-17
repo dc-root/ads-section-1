@@ -1,0 +1,1 @@
+// ARQUIVO A PARTE (fileAccessFunction.c)
