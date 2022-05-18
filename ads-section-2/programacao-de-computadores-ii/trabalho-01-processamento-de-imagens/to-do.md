@@ -1,0 +1,4 @@
+- [] ADICIONAR FUNCIONALIDADE DO TIPO P5
+- [] ADICIONAR FUNCIONALIDADE DE PULAR COMENTÁRIOS 
+- [] fileAccessFunction.h retornar string
+- [] imageProcessFunction.h recebe matriz como parametro

@@ -9,11 +9,16 @@ typedef struct {
     short int line, column, colorVariance;
 } tPGM, *tPPGM;
 
-// DECLARAÇÃO DAS FUNÇÕES
-void verifyTypeFile(FILE **filePGM, unsigned short int *matriz[], tPPGM pgm);
+// PROTOTIPO DAS FUNÇÕES
+void verifyTypeFileAndAddSegmatation(FILE **filePGM, unsigned short int *matriz[], tPPGM pgm);
 
-void openEndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
+void maskCheck(short int *mask, char flagString[]);
 void hError( char messageError[], _Bool man);
+
+char * formatName(char filePath[], int mask);
+void openAndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
+
 int toCompare(const void *p1, const void *p2);
+
 
 #endif
