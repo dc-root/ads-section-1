@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     char outputFileName[100] = "output";
 
     char dimensao[100];
-    sprintf(dimensao, "_%dx%d_", mask, mask);
+    sprintf(dimensao, "_%dx%d_", mask, mask); // 3x3_nomedo.pgm
     strcat(outputFileName, dimensao);
 
     char *fileName;
@@ -80,7 +80,6 @@ int main(int argc, char *argv[]) {
             pontTypeStructPGM->colorVariance
     );
     
-
     int matrizScanning[mask][mask];
 	
 	int maskCalc = (int) (mask/2);

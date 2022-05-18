@@ -10,7 +10,10 @@ typedef struct {
 } tPGM, *tPPGM;
 
 // DECLARAÇÃO DAS FUNÇÕES
+void verifyTypeFile(FILE **filePGM, unsigned short int *matriz[], tPPGM pgm);
+
 void openEndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
 void hError( char messageError[], _Bool man);
 int toCompare(const void *p1, const void *p2);
+
 #endif
