@@ -3,12 +3,10 @@
 
 #include "main.h"
 
-const int col = 10; // TESTE
+void ImageProcessFunction(const int line, const int column, unsigned short int matriz[][column], short int mask) {
 
-void ImageProcessFunction(short int *matriz[][col], int line, int column, short int mask) {
-
-    int matrizScanning[mask][mask];
-	int maskCalc = (int) (mask/2);
+    unsigned short int matrizScanning[mask][mask];
+	unsigned int maskCalc = (int) (mask/2);
 	// percorrendo a matriz 
 	for (int a=0; a < (line - (2 * maskCalc)); a++) {
 		for (int b=0; b < (column - (2 * maskCalc)); b++) {

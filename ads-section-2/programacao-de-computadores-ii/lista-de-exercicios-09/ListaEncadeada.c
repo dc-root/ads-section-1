@@ -42,7 +42,6 @@ insere(pLista p, char *ni, char *nn, char *depoisnome){
         noProcurado->proximo = noNovo;
     }
 
-
     return ;
 }
 int main (int argc, char *argv[]){

@@ -7,12 +7,13 @@
 #include "main.h"
 #include "cmdHandlingFunction.h"
 #include "fileAccessFunction.h"
+#include "imgProcessFunction.h"
 
 /*
-    pgmmediana -m N -i input
-    pgmmediana  --> nome do executavel.
-    -m          --> O tamanho da máscara é um inteiro positivo ímpar, caso não seja informado, o valor default é 3, para uma máscara de 3×3 pixels.
-    -i          --> Imagem de imput(a imagem a ser modificada).
+ *   pgmmediana     -m N -i input
+ *   pgmmediana     --> nome do executavel.
+ *   -m             --> O tamanho da máscara é um inteiro positivo ímpar, caso não seja informado, o valor default é 3, para uma máscara de 3×3 pixels.
+ *   -i             --> Imagem de imput(a imagem a ser modificada).
 */
 
 int main(int argc, char *argv[]) {
@@ -27,10 +28,10 @@ int main(int argc, char *argv[]) {
 
     // Lendo cada elemento do cabeçalho do arquivo
     fscanf(pgmInput, "%s %hd %hd %hd",
-            pontTypeStructPGM->type,
-            &pontTypeStructPGM->column,
-            &pontTypeStructPGM->line,
-            &pontTypeStructPGM->colorVariance
+           pontTypeStructPGM->type,
+           &pontTypeStructPGM->column,
+           &pontTypeStructPGM->line,
+           &pontTypeStructPGM->colorVariance
     );
 
     // Lendo o corpo do arquivo (matriz)
@@ -45,14 +46,7 @@ int main(int argc, char *argv[]) {
     fclose(pgmInput);
 
     // validações e formatações necessárias para o nome do arquivo de saida(output_3x3_filename.pgm) | ARQUIVO A PARTE (fileAccessFunction.h)
-    
-    char * formatName(char filePath[], int mask);
-
-    char outputFileName[100] = *formatName((argv[2] ? argv[2] : argv[1]), mask) ? // função deve retornar uma string ⚠
-                               *formatName((argv[2] ? argv[2] : argv[1]), mask) : "output.pgm";
-
-    // TESTE!
-    printf("%s", *formatName((argv[2] ? argv[2] : argv[1]), mask));
+    char *outputFileName = formatName((argv[2] ? argv[2] : argv[1]), mask);
 
     // Novo arquivo de saida
     FILE *pgmOutput;
@@ -68,7 +62,11 @@ int main(int argc, char *argv[]) {
     
 
     // Aplicando o filtro | ARQUIVO A PARTE (imgProcessFunction.h)
-    
+    ImageProcessFunction(pontTypeStructPGM->line,
+                         pontTypeStructPGM->column,
+                         matrizColorGrid,
+                         mask
+    );
 
     // Escrevendo o corpo do arquivo (matriz) output
     for(int i=0; i<pontTypeStructPGM->line; i++) {
@@ -78,7 +76,9 @@ int main(int argc, char *argv[]) {
         } fprintf(pgmOutput, "\n");
     }
 
-    fclose(pgmOutput);
+    free(outputFileName);
     free(pontTypeStructPGM);
+    
+    fclose(pgmOutput);
     return 0;
 }

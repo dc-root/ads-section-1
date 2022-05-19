@@ -5,7 +5,8 @@
 #include "main.h"
 
 char * formatName(char filePath[], int mask) {
-    char outputFileName[100] = "output";
+    char *outputFileName = malloc(sizeof(char) *100);
+    strcpy(outputFileName, "output");
 
     char dimensao[100];
     sprintf(dimensao, "_%dx%d_", mask, mask); // 3x3_nomedo.pgm
