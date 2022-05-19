@@ -5,7 +5,7 @@
 #include "main.h"
 
 char * formatName(char filePath[], int mask) {
-    char *outputFileName = malloc(sizeof(char) *100);
+    char *outputFileName = malloc(sizeof(char) * 100);
     strcpy(outputFileName, "output");
 
     char dimensao[100];
@@ -22,7 +22,7 @@ char * formatName(char filePath[], int mask) {
 }
 
 // DEFININDO FUNÇÃO PARA VERIFICAÇÃO E ABERTURA DO ARQUIVO
-void openAndVerifyFile(FILE **filePGM, char filePath[], char operation[]) {
+void openAndVerifyFile(FILE **filePGM, char filePath[], char *operation) {
     if(!(*filePGM = fopen(filePath, operation))) {
 
         hError("> Error opening file!",  1);

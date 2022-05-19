@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "main.h"
+
 // FUNÇÃO PARA VERIFICAR A EXISTÊNCIA DA MASCARA 
 void maskCheck(short int *mask, char flagString[]) {
     unsigned short flagMaskN = strtol(flagString, NULL, 10);
