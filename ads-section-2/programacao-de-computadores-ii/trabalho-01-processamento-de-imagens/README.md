@@ -1,9 +1,6 @@
 <h2 align="center"> <b>PROCESSAMENTO DE IMAGENS 🖼
 
----
-
 </b>FILTRO DE MEDIANA<h2>
-
 
 ## 💬 **Sobre**
 
@@ -13,7 +10,6 @@
 </p>
 
 <p>O projeto e um <a href="https://pt.wikipedia.org/wiki/Interface_de_linha_de_comandos">CLI</a> onde pode ser aplicado o filtro de mediana pelo  arquivo execultável passando como primeiro argumento, sendo opcional, a mascara do filtro que e um numero inteiro impar, caso ela não seja passada terá como valor padrão 3x3, e como segundo argumento o nome do arquivo de entrada(input), o arquivo deve ser uma imagem no formato <a href="https://en.wikipedia.org/wiki/PGM">.pgm</a></p>
-
 <br>
 
 <div align="center">
@@ -38,6 +34,6 @@ with mask:          pgmmedian [ODD-NUMBER-MASK] [FILE-INPUT]
 ```
 ---
 
-<h3 align="center">
+<h5 align="center">
   &copy;2022 - <a href="https://github.com/dc7devs/">dc7devs</a>
-</h3>
+</h5>
