@@ -7,21 +7,21 @@ typedef struct {
     char inscricao[10];
     char nome[30];
 
-}tCandidato;
+} tCandidato;
 
-typedef struct no{
+typedef struct no {
     tCandidato candidado;
     struct no *proximo;
 }tNo, *pLista;
 
-void imprime(pLista p){
+void imprime(pLista p) {
     while (p){
         printf("%s - %s\n", p->candidado.inscricao, p->candidado.nome);
         p=p->proximo;
     }
 }
 
-insere(pLista p, char *ni, char *nn, char *depoisnome){
+void insere(pLista p, char *ni, char *nn, char *depoisnome){
     pLista noProcurado=NULL, noNovo;
 
     while(p && !noProcurado ){
@@ -41,9 +41,12 @@ insere(pLista p, char *ni, char *nn, char *depoisnome){
         noNovo->proximo = noProcurado->proximo;
         noProcurado->proximo = noNovo;
     }
-
-    return ;
 }
+
+int InsereOrdenado() { // Função para iserção dos dados de forma ordenada ✅
+
+}
+
 int main (int argc, char *argv[]){
     pLista lista, ponteiroAuxiliar1, ponteiroAuxiliar2, ultimo;
 
@@ -73,7 +76,7 @@ int main (int argc, char *argv[]){
     char depoisNome[30] = "Maria";
 
     printf("\n\n");
-    insere(lista, inscricaoNova,nomenovo, depoisNome);
+    insere(lista, inscricaoNova, nomenovo, depoisNome);
 
     imprime(lista);
 
