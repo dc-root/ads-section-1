@@ -42,13 +42,10 @@ int main(int argc, char *argv[]) {
     
     // IN TESTEs
     if (strcmp(pontTypeStructPGM->type, "P5") == 0) {
-        setOperator(pontTypeStructPGM, operation, "rb");
-
-        size_t sizeFile = pontTypeStructPGM->line * pontTypeStructPGM->column;
+        setOperator(pontTypeStructPGM, operation, "ab");
 
         // Lendo o corpo do arquivo (matriz)
-        fread(&matrizColorGridSTR, sizeof(char), sizeFile, pgmInput);
-
+        fread(&matrizColorGridSTR, sizeof(matrizColorGridSTR), 1, pgmInput);
     } else {
         // Lendo o corpo do arquivo (matriz) 
         for(int i=0; i<pontTypeStructPGM->line; i++) {
@@ -85,10 +82,8 @@ int main(int argc, char *argv[]) {
     if (strcmp(pontTypeStructPGM->type, "P5") == 0) {
         setOperator(pontTypeStructPGM, operation, "ab");
 
-        size_t sizeFile = pontTypeStructPGM->line * pontTypeStructPGM->column;
-
         // Lendo o corpo do arquivo (matriz)
-        fwrite(&matrizColorGridSTR, sizeof(char), sizeFile, pgmInput);
+        fwrite(&matrizColorGridSTR, sizeof(matrizColorGridSTR), 1, pgmInput);
         fprintf(pgmInput, "\0");
 
     } else {

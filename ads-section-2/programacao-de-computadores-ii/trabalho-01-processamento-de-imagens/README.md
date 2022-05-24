@@ -23,8 +23,6 @@
 <img src="./.github/ballons-median.png" alt="median" align="center" />
 </div>
 
----
- 
 ## 💻 **como executar**
 
 ```bash

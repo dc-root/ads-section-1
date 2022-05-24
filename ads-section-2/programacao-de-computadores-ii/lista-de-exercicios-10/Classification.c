@@ -1,14 +1,13 @@
 #include <stdio.h>
 
-
-// Função que imlementa Bubble Sort
+// Funï¿½ï¿½o que imlementa Bubble Sort
 void BubbleSort(int lista[], unsigned int n)
 {
    int i, j;
     int aux;
    for (i = 0; i < n-1; i++)     
  
-       // O último elemento já está no lugar 
+       // O ï¿½ltimo elemento jï¿½ estï¿½ no lugar 
        for (j = 0; j < n-i-1; j++)
            if (lista[j] > lista[j+1]){ /* Compara elementos adjacentes */
                aux = lista[j]; // faz a troca
@@ -16,7 +15,7 @@ void BubbleSort(int lista[], unsigned int n)
                lista[j+1] = aux;
             }
 }
-// Função que imlementa Insertioin Sort
+// Funï¿½ï¿½o que imlementa Insertioin Sort
 void InsertionSort(int lista[], int tamanhoDaLista){
     int i, j, chave;
     for (i = 1; i < tamanhoDaLista; i++) {
@@ -30,11 +29,11 @@ void InsertionSort(int lista[], int tamanhoDaLista){
     }
 }
 
-// Função que imlementa Binary Search
+// Funï¿½ï¿½o que imlementa Binary Search
 int BinarySearch (int lista[], int chave, unsigned int tamanhoDaLista)
 {
-     int inf = 0;     // limite inferior (o primeiro índice de vetor em C é zero          )
-     int sup = tamanhoDaLista-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
+     int inf = 0;     // limite inferior (o primeiro ï¿½ndice de vetor em C ï¿½ zero          )
+     int sup = tamanhoDaLista-1; // limite superior (termina em um nï¿½mero a menos. 0 a 9 sï¿½o 10 nï¿½meros)
      int meio;
      while (inf <= sup)
      {
@@ -46,10 +45,10 @@ int BinarySearch (int lista[], int chave, unsigned int tamanhoDaLista)
           else
                inf = meio+1;
      }
-     return -1;   // não encontrado
+     return -1;   // nï¿½o encontrado
 }
 
-void SelectionSort(int lista[], unsigned int tamanhoDaLista) { 
+void SelectionSort(int lista[], unsigned int tamanhoDaLista) {
   int i, j, min, aux;
   for (i = 0; i < (tamanhoDaLista-1); i++) 
   {
@@ -67,16 +66,15 @@ void SelectionSort(int lista[], unsigned int tamanhoDaLista) {
 }
 
 
-int main(void)
-{
-    int  arrayDeInts[] = {100,90,80,70,60,50,40,30,20,10,0};
-    int  i, tamanhoAr;
+int main(void) {
+  int  arrayDeInts[] = {100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0};
+  int  i, tamanhoAr;
 
-    tamanhoAr = sizeof(arrayDeInts)/sizeof(arrayDeInts[0]);
+  tamanhoAr = sizeof(arrayDeInts)/sizeof(int);
 
-    for (i=0; i < tamanhoAr; i++) {
-    	 printf(" %d ", arrayDeInts[i]);
-    }
+  for (i=0; i < tamanhoAr; i++) {
+    printf(" %d ", arrayDeInts[i]);
+  }
 
   //  BubbleSort(arrayDeInts, tamanhoAr);
   //  SelectionSort(arrayDeInts, tamanhoAr);
