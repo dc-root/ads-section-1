@@ -1,21 +1,58 @@
 #include <stdio.h>
+#include <time.h>
 
-// Fun��o que imlementa Bubble Sort
-void BubbleSort(int lista[], unsigned int n)
-{
-   int i, j;
-    int aux;
-   for (i = 0; i < n-1; i++)     
- 
-       // O �ltimo elemento j� est� no lugar 
-       for (j = 0; j < n-i-1; j++)
-           if (lista[j] > lista[j+1]){ /* Compara elementos adjacentes */
-               aux = lista[j]; // faz a troca
-               lista[j] = lista[j+1];
-               lista[j+1] = aux;
-            }
+#if defined(_WIN32) || defined(_WIN64)
+    void limparBash() { return system("cls"); }
+#else defined(__linux__) || defined(__unix__)
+    void limparBash() { return system("clear"); }
+#endif
+
+// Funcao que imlementa Bubble Sort
+void BubbleSort(int lista[], unsigned int n) {
+  int i, j, x;
+  int aux;
+  for (i = 0; i < n-1; i++)
+    for (j = 0; j < n-i-1; j++) {
+        if (lista[j] > lista[j+1]){ /* Compara elementos adjacentes */
+            aux = lista[j]; // faz a troca
+            lista[j] = lista[j+1];
+            lista[j+1] = aux;
+        }
+
+        // Laço for para impreção dos elementos sendo alterados ✅        
+        printf("BubbleSort\t\t\t(%dvs)\n\n", i);
+        for (x=0; x < n; x++) {
+            printf("%d ", lista[x]);
+        } printf("\n");
+
+        sleep(1);
+        limparBash();
+    }
 }
-// Fun��o que imlementa Insertioin Sort
+
+// Função para classificar o array em ordem decrescente ✅
+void BubbleSortDecrement(int lista[], unsigned int n) {
+  int i, j, x;
+  int aux;
+  for (i = 0; i < n-1; i++)
+    for (j = 0; j < n-i-1; j++) {
+        if (lista[j] < lista[j+1]){ /* Compara elementos adjacentes */
+            aux = lista[j]; // faz a troca
+            lista[j] = lista[j+1];
+            lista[j+1] = aux;
+        }
+
+        printf("BubbleSort decrescente\t\t(%dvs)\n\n", i);
+        for (x=0; x < n; x++) {
+            printf("%d ", lista[x]);
+        } printf("\n");
+
+        sleep(1);
+        limparBash();
+    }
+}
+
+// Funcao que imlementa Insertioin Sort
 void InsertionSort(int lista[], int tamanhoDaLista){
     int i, j, chave;
     for (i = 1; i < tamanhoDaLista; i++) {
@@ -29,29 +66,30 @@ void InsertionSort(int lista[], int tamanhoDaLista){
     }
 }
 
-// Fun��o que imlementa Binary Search
-int BinarySearch (int lista[], int chave, unsigned int tamanhoDaLista)
-{
-     int inf = 0;     // limite inferior (o primeiro �ndice de vetor em C � zero          )
-     int sup = tamanhoDaLista-1; // limite superior (termina em um n�mero a menos. 0 a 9 s�o 10 n�meros)
-     int meio;
-     while (inf <= sup)
-     {
-          meio = (inf + sup)/2;
-          if (chave == lista[meio])
-               return meio;
-          if (chave < lista[meio])
-               sup = meio-1;
-          else
-               inf = meio+1;
-     }
-     return -1;   // n�o encontrado
+// Função que imlementa Binary Search
+int BinarySearch (int lista[], int chave, unsigned int tamanhoDaLista){
+    int inf = 0;                // limite inferior (o primeiro índice de vetor em C é zero)
+    int sup = tamanhoDaLista-1; // limite superior (termina em um número a menos. 0 a 9 são 10 números)
+    int meio, count=0;
+    while (inf <= sup) {
+        meio = (inf + sup)/2;
+        if (chave == lista[meio]) {
+          printf("\nQuantidade de comparações realizadas(BinarySearch): %d", count); // ✅
+          return meio;
+        } else if (chave < lista[meio])
+          sup = meio-1;
+        else
+            inf = meio+1;
+        count++;
+    }
+    printf("\nQuantidade de comparações realizadas(BinarySearch): %d", count);
+
+    return -1;   // não encontrado
 }
 
 void SelectionSort(int lista[], unsigned int tamanhoDaLista) {
   int i, j, min, aux;
-  for (i = 0; i < (tamanhoDaLista-1); i++) 
-  {
+  for (i = 0; i < (tamanhoDaLista-1); i++) {
      min = i;
      for (j = (i+1); j < tamanhoDaLista; j++) {
        if(lista[j] < lista[min]) 
@@ -65,27 +103,48 @@ void SelectionSort(int lista[], unsigned int tamanhoDaLista) {
   }
 }
 
+// Implementaçã da dunção SequentialSearch()  ✅
+int SequentialSearch(int lista[], unsigned int tamanhoDaLista,  int chave) {
+  int i, j, count=0;
+  for (i = 0; i < tamanhoDaLista; i++) {
+    if(chave == lista[i]) {
+      printf("\nQuantidade de comparações realizadas(SequentialSearch): %d", count);
+      return lista[i];
+    }
+    count++;
+  }
+
+  printf("\nQuantidade de comparações realizadas(SequentialSearch): %d", count);
+
+  return -1;
+}
 
 int main(void) {
-  int  arrayDeInts[] = {100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0};
+  int  arrayDeInts[] = {100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0}; //  | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
   int  i, tamanhoAr;
 
   tamanhoAr = sizeof(arrayDeInts)/sizeof(int);
 
   for (i=0; i < tamanhoAr; i++) {
-    printf(" %d ", arrayDeInts[i]);
+    printf("%d ", arrayDeInts[i]);
   }
+  printf("\n\n");
+  
+  // sleep(3);
 
-  //  BubbleSort(arrayDeInts, tamanhoAr);
-  //  SelectionSort(arrayDeInts, tamanhoAr);
+  BubbleSort(arrayDeInts, tamanhoAr);
+  BubbleSortDecrement(arrayDeInts, tamanhoAr);
+  
+  SelectionSort(arrayDeInts, tamanhoAr);
   InsertionSort(arrayDeInts, tamanhoAr);
 
-    printf("\n\n\n");
-    for (i=0; i < tamanhoAr; i++) {
-    	 printf(" %d ", arrayDeInts[i]);
-    }
+  SequentialSearch(arrayDeInts, tamanhoAr, 11); // 11
+  BinarySearch(arrayDeInts, 11, tamanhoAr);     // 3
 
-  //  printf("\nEncontrou? %d",BinarySearch(arrayDeInts, 30, tamanhoAr));
-
-    return 0;
+  // Questão 03;
+  /* O SequentialSearch faz a busca em todo o vetor de elementos, por isso a quantidade de comparações e maior,
+   * porém ele não depende que os elementos estejam ordenados. Em contrapartida o modelo SequentialSearch e muito mais rapido
+   * em suas comparação, porém depende que os elementos estejam ordenados.
+   */
+  return 0;
 }
