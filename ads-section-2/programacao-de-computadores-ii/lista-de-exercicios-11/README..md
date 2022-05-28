@@ -6,7 +6,18 @@
 4. Cada no deve carregar um conteudo
 5. Para ser considerada uma arvore binaria, deve possuir no minimo duas ramificações(n 3)
 
-### QUESTÃO 02
+## QUESTÃO 02
 
-### QUESTÃO 03
+![Q2](./.github/Q2.png)
 
+## QUESTÃO 03
+
+<figure>
+<figcaption>Menor tamanho possivel</figcaption>
+<img src="./.github/Q3_minor.png" alt="menor" width="350" >
+</figure>
+
+<figure>
+<figcaption>Maior tamanho possivel</figcaption>
+<img src="./.github/Q3_maior.png" alt="maior" width="300" >
+</figure>
