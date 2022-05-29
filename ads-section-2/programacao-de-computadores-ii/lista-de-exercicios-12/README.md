@@ -8,8 +8,8 @@
 
 ### QUESTÃO 02
 
-
+maxmin1(NaN)
+maxmin2(NaN)
+maxmin3(NaN)
 
 ### QUESTÃO 03
-
-N/2 + N/2
