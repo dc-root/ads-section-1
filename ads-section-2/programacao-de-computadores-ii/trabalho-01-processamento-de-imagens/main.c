@@ -18,30 +18,28 @@
 int main(int argc, char *argv[]) {
     FILE *pgmInput;
     tPPGM pontTypeStructPGM = calloc(1, sizeof(tPGM));
-    char *operation = malloc(sizeof(char) * 3);
 
     unsigned short int mask=0;
     maskCheck(&mask, (argv[2] ? argv[1] : "3")); // ARQUIVO A PARTE (cmdHandlingFunction.h)
     
-    strcpy(operation, "r");
-    openAndVerifyFile(&pgmInput, (argv[2] ? argv[2] : argv[1]), operation);
-    fscanf(pgmInput, "%s %hd %hd %hd",
+    openAndVerifyFile(&pgmInput, (argv[2] ? argv[2] : argv[1]), "r");
+    ignoreComments(&pgmInput);
+    fscanf(pgmInput, "%s%hd%hd%hd",
                 pontTypeStructPGM->type,
                 &pontTypeStructPGM->column,
                 &pontTypeStructPGM->line,
                 &pontTypeStructPGM->colorVariance
         );
+    ignoreComments(&pgmInput);
 
     // Lendo o corpo do arquivo (matriz)
-    unsigned short int matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz do arquivo de input
+    unsigned short matrizColorGrid[pontTypeStructPGM->line][pontTypeStructPGM->column]; // matriz do arquivo de input
     
     // IN TESTEs
     if (strcmp(pontTypeStructPGM->type, "P5") == 0) {
-        setOperator(pontTypeStructPGM, operation, "rb");
-        
         fclose(pgmInput);
-        openAndVerifyFile(&pgmInput, (argv[2] ? argv[2] : argv[1]), operation);
-        fseek(pgmInput, sizeof(pontTypeStructPGM) * 1, SEEK_CUR);
+        openAndVerifyFile(&pgmInput, (argv[2] ? argv[2] : argv[1]), "rb");
+        fseek(pgmInput, sizeof(pontTypeStructPGM) * 2, SEEK_CUR);
 
         // Lendo o corpo do arquivo (matriz)
         fread(&matrizColorGrid, sizeof(matrizColorGrid), 1, pgmInput);
@@ -54,22 +52,13 @@ int main(int argc, char *argv[]) {
         }
     }
     fclose(pgmInput);
-
-    // FINs TESTs
-    printf("%s\n%hd %hd\n%hd\n",
-            pontTypeStructPGM->type,
-            pontTypeStructPGM->column,
-            pontTypeStructPGM->line,
-            pontTypeStructPGM->colorVariance
-    );
     
     // validações e formatações necessárias para o nome do arquivo de saida(fileNameOutput) | ARQUIVO A PARTE (fileAccessFunction.c)
     char *outputFileName = formatName((argv[2] ? argv[2] : argv[1]), mask);
 
     // Novo arquivo de saida
     FILE *pgmOutput;
-    strcpy(operation, "w");
-    openAndVerifyFile(&pgmOutput, outputFileName, operation);
+    openAndVerifyFile(&pgmOutput, outputFileName, "w");
 
     // Escrevendo cada elemento do cabeçalho no arquivo
     fprintf(pgmOutput, "%s\n%hd %hd\n%hd\n",
@@ -86,9 +75,7 @@ int main(int argc, char *argv[]) {
 
     // Escrevendo o corpo do arquivo (matriz)
     if (strcmp(pontTypeStructPGM->type, "P5") == 0) {
-
         fwrite(&matrizColorGrid, sizeof(matrizColorGrid), 1, pgmOutput);
-        fprintf(pgmOutput, "\0");
     } else {
         for(int i=0; i<pontTypeStructPGM->line; i++) {
             for(int j=0; j<pontTypeStructPGM->column; j++) {
@@ -99,7 +86,6 @@ int main(int argc, char *argv[]) {
     }
     fclose(pgmOutput);
 
-    free(operation);
     free(pontTypeStructPGM);
     free(outputFileName);
     return 0;

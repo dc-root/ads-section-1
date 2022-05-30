@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <ctype.h>
 
 #include "main.h"
 
@@ -38,12 +39,15 @@ int toCompare(const void *p1, const void *p2) {
     return 0;
 }
 
-void setOperator(tPPGM pgm, char *operation, char setOperation[]) {
-	if(strcmp(pgm->type, "P2") == 0) {
-
-		strcpy(operation, setOperation);
-	} else if (strcmp(pgm->type, "P5") == 0) {
-
-		strcpy(operation, setOperation);
-	}
+void ignoreComments(FILE **filePGM) {
+    int ch;
+    char line[100];
+ 
+    while ((ch = fgetc(*filePGM)) != EOF && isspace(ch));
+ 
+    if (ch == '#') {
+        fgets(line, sizeof(line), *filePGM);
+        ignoreComments(filePGM);
+    } else
+        fseek(*filePGM, -1, SEEK_CUR);
 }

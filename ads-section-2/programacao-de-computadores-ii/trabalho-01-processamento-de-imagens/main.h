@@ -14,8 +14,8 @@ typedef struct {
 // Abertura e verificação de um arquivo
 void openEndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
 
-// verificação do tipo do arquivo (P2 ou P5) para aplicar o filtro correspondente
-void setOperator(tPPGM pgm, char *operation, char setOperation[]);
+// ignorar comentário
+void ignoreComments(FILE **filePGM);
 
 // função para mesagens de erro
 void hError( char messageError[], _Bool man);
