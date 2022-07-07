@@ -8,10 +8,10 @@ char * formatName(char filePath[], int mask) {
     char *outputFileName = (char*)malloc(strlen(filePath));
     sprintf(outputFileName, "output_%dx%d_", mask, mask); // output_3x3_
 
-    char fileName[] = strstr(filePath, "/") != NULL ?
+    filePath = strstr(filePath, "/") != NULL ?
                 strrchr(filePath, '/')+1
                 : filePath;
-    strcat(outputFileName, fileName); // output_3x3_file
+    strcat(outputFileName, filePath); // output_3x3_file 
 
     return outputFileName;
 }
