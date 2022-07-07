@@ -8,8 +8,19 @@
 
 ### QUESTÃO 02
 
-maxmin1(NaN)
-maxmin2(NaN)
-maxmin3(NaN)
+O segunda seria a melhor implementação. Em sua complexidade ele se sobressai no melhor e no pior caso comparado ao primeiro que mantém constante o número de comparação em todos os casos, já o maxmin3 e a pior implementação pois tem complexidade alta em todos os casso e elevado o numero de comparação.
+
+```
+void maxmin2(int vetor[], int n, int *max, int *min){
+    int i;
+    *max = vetor[0];
+    *min = vetor[0];
+
+    for(i = 1; i < n; i++){
+        if(vetor[i] > *max) *max = vetor[i]; // n-1
+        else if(vetor[i] < *min) *min = vetor[i]; // 2(n-1)
+    } 
+}
+```
 
 ### QUESTÃO 03
