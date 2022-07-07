@@ -5,18 +5,13 @@
 #include "main.h"
 
 char * formatName(char filePath[], int mask) {
-    char *outputFileName = malloc(sizeof(char) * 100);
-    strcpy(outputFileName, "output");
+    char *outputFileName = (char*)malloc(strlen(filePath));
+    sprintf(outputFileName, "output_%dx%d_", mask, mask); // output_3x3_
 
-    char dimensao[100];
-    sprintf(dimensao, "_%dx%d_", mask, mask); // 3x3_nomedo.pgm
-    strcat(outputFileName, dimensao);
-
-    char *fileName;
-    fileName = strstr(filePath, "/") != NULL ?
+    char fileName[] = strstr(filePath, "/") != NULL ?
                 strrchr(filePath, '/')+1
                 : filePath;
-    strcat(outputFileName, fileName);
+    strcat(outputFileName, fileName); // output_3x3_file
 
     return outputFileName;
 }
