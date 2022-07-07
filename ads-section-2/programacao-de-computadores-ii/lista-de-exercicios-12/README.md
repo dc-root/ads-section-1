@@ -8,7 +8,7 @@
 
 ### QUESTÃO 02
 
-O segunda seria a melhor implementação. Em sua complexidade ele se sobressai no melhor e no pior caso comparado ao primeiro que mantém constante o número de comparação em todos os casos, já o maxmin3 e a pior implementação pois tem complexidade alta em todos os casso e elevado o numero de comparação.
+O segundo algoritimo seria a melhor implementação. Em sua complexidade ele se sobressai no melhor e no pior caso comparado ao primeiro que mantém constante o número de comparação em todos os casos, já o maxmin3 e a pior implementação pois tem complexidade alta em todos os casso e elevado numero de comparação.
 
 ```
 void maxmin2(int vetor[], int n, int *max, int *min){
