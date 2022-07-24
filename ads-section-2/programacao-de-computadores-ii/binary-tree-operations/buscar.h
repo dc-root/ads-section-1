@@ -3,9 +3,8 @@
 
 #include "main.h"
 
-// função para buscar um elemento na árvore
 int buscar(No *raiz, int chave) {
-    if(raiz == NULL) {
+    if(!raiz) {
         return 0;
     } else {
         if(raiz->conteudo == chave)

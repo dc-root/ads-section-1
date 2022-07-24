@@ -5,11 +5,12 @@
 
 <br>
 
-```C
-#include <stdio.h>
+```C++
+#include <iostream>
 
-int void () {
-    printf("Starting one more step!");
+int main() {
+    std::cout << "Hello, Word!" << std::endl;
+    return 0;
 }
 ```
 </div>

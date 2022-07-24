@@ -1,16 +1,16 @@
 <h1 align="center">Analise e Desenvolviment de Sistemas - 1º periodo</h1>
 
 <div align="left" widht="100">
-    <img align="right" src="../.github/catstello.png" width="325" alt="octodex-img" title="octodex">
+    <img align="right" src="../.github/Yogitocat.png" width="325" alt="octodex-img" title="octodex">
 
 <br>
 
 ```C
-#include <stdlib.h>
 #include <stdio.h>
 
-int void () {
-    printf("Starting one more step!");
+int main() {
+    printf("Hello, Word!");
+    return 0;
 }
 ```
 </div>
