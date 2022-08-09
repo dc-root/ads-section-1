@@ -2,14 +2,13 @@
 
 using namespace std;
 
-int main(int argc, char **argv) {
-	int  ticket1 = 20,
-	     ticket2 = 30,
-	     ticket3 = 100;
+int main() {
+	double pesoCarga1 = 1033.49;
+        double pesoCarga2 = 849.88;
 
-	int media = ticket1 + ticket2 + ticket3 / 3;
+	int pesoTotalCargas =(int) (pesoCarga1 + pesoCarga2);
 
-	cout << "A media e igual a " << media << endl;
+	cout << "Peso total das cargas: " << pesoTotalCargas << endl;
+	return 0;
 	
-        return 0;
 }
