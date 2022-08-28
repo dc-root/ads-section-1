@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class NumeroPrimo  {
     public static boolean isPrimeNumber(int value) {
         for(int i=1, cont=0; i<=value; i++) {
             if(value % i == 0) {
