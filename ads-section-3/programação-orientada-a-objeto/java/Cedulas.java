@@ -1,28 +1,23 @@
 import java.util.Scanner;
 
 public class Cedulas {
-    public static int CalcCheckCeduleCount(int valorEmReais, int countCedulas, int Cedula) {
-        countCedulas = valorEmReais / Cedula;
+    public static int CountMinCedule(int valorEmReais, int Cedula) {
+        int qntCedulas = (int)valorEmReais / Cedula;
         valorEmReais = valorEmReais % Cedula;
 
-        System.out.printf("%d nota%s de R$ %d,00\n", countCedulas, (countCedulas > 1 ? "s" : ""), Cedula);
+        System.out.printf("%d nota%s de R$ %.2f\n", qntCedulas, (qntCedulas > 1 ? "s" : ""), (float)Cedula);
         return valorEmReais;
     }
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
+        int[] cedulas = { 100, 50, 20, 10, 5, 2, 1 };
         
         int valorEmReais = leitor.nextInt();
-        int countCedulas=0;
         
         System.out.println(valorEmReais);
-
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 100);
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 50);
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 20);
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 10);
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 5);
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 2);
-        valorEmReais = CalcCheckCeduleCount(valorEmReais, countCedulas, 1);
+        for(int i=0, sz=cedulas.length; i<sz; i++) {
+            valorEmReais = CountMinCedule(valorEmReais, cedulas[i]);
+        }
 
         leitor.close();
     }

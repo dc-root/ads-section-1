@@ -6,9 +6,22 @@
 <br>
 
 ```java
-public class HelloWorld {
+public class Person {
+    private String name;
+	private String message;
+
+    public Person(String name, String message) {
+		this.name = name;
+		this.message = message;
+	}
+
+    public String showYourself() {
+        return this.message+"\n\tmy name is "+this.name;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello Word");
+        Person githubMascot = new Person("Octocat", "Ola pessoas! :]");
+        System.out.printf(githubMascot.showYourself());
     }
 }
 ```
