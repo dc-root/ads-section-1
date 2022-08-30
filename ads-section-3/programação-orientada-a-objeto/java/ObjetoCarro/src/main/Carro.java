@@ -1,0 +1,100 @@
+package main;
+
+public class Carro {
+	private String model;
+	private String plate;
+	private String color;
+	private int carSpeed;
+	private boolean isSwitchedOn;
+
+	private Pessoa proprietario;
+
+	public Carro(String model, String plate, String color) {
+		this.model = model;
+		this.plate = plate;
+		this.color = color;
+		
+		this.carSpeed = 0;
+		this.isSwitchedOn = false;
+	}
+
+	public void setObterProprietario(Pessoa proprietario) {
+		this.proprietario = proprietario;
+	}
+	
+	public void ligar() {
+		if(isSwitchedOn) {
+			System.out.printf("\tO carro já está ligado!\n");
+			return;
+		}
+		System.out.println("O(a) "+proprietario.getName()+" esta ligando o carro...");
+		isSwitchedOn = true;
+		System.out.println("\tCarro ligado!");
+	}
+
+	public void desligar() {
+		if(!isSwitchedOn) {
+			System.out.printf("\tO carro já esta desligado!\n");
+			return;
+		} else if(carSpeed > 0) {
+			System.out.printf("\tO carro esta ligado com velocidade de %dkm/h, pare o carro antes de desliga-lo!\n", carSpeed);
+			return;
+		}
+		System.out.printf("O(a) "+proprietario.getName()+" está desligando o carro...\n");
+		isSwitchedOn = false;
+		System.out.println("\tCarro desligado!");
+	}
+
+	public void acelerar() {
+		if(!isSwitchedOn) {
+			System.out.println("\tO carro está desligado para acelerar"); 
+			return;
+		} else if(carSpeed == 100) {
+			System.out.printf("\tO carro já chegou em sua velocidade maxima!\n");
+			return;
+		}
+		carSpeed += 20;
+		System.out.printf("\t%s\n", (carSpeed == 100 ? "O carro chegou em sua velocidade maxima!" : "velocidade almentada para "+carSpeed+"km/h"));
+	}
+	
+	public void frear() {
+		if(!isSwitchedOn) {
+			System.out.printf("\tO carro não esta ligado e nem em movimento para frear!\n");
+			return;
+		} else if(carSpeed == 0) {
+			System.out.printf("\tO carro já está parado!\n");
+			return;
+		}
+		
+		carSpeed -= 20;
+		System.out.printf("\t%s\n", (carSpeed == 0 ? "Você parou o carro!" : "velocidade reduzida para "+carSpeed+"km/h"));
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public String getPlate() {
+		return plate;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public int getCarSpeed() {
+		return carSpeed;
+	}
+
+	public Boolean getIsSwitchedOn() {
+		return isSwitchedOn;
+	}
+
+	public void setIsSwitchedOn(Boolean isSwitchedOn) {
+		this.isSwitchedOn = isSwitchedOn;
+	}
+
+	public void showSpacs() {
+		System.out.printf("\tO carro %s de placa %s e cor %s, esta %s%n", model, plate, color, (isSwitchedOn ? "ligado"+(carSpeed == 0 ? " e parado!" : ", com velocidade de "+carSpeed+"km/h!") : "desligado!"));
+	}
+}
