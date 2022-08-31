@@ -21,8 +21,8 @@ public class Pessoa {
 
 	// Public Methods
 	public void showPersonalData() {
-		System.out.printf("O %s tem %d anos%s", name, age, (age >= 18 ? ", tem idade suficiente para para dirigir"+(isLicensed ? ", possui habilitação" : ", porem não possui habilitação") : ", não tem idade suficiente para para dirigir"));
-		System.out.printf("%s", (isHasCar ? "\nele(a) possui um carro "+carro.getModel()+" de cor "+carro.getColor()+" e placa "+carro.getPlate() : " e não tem um carro!\n"));
+		System.out.printf("O(a) %s tem %d anos%s", name, age, (age >= 18 ? ", tem idade suficiente para para dirigir"+(isLicensed ? ", possui habilitação" : ", porem não possui habilitação") : ", não tem idade suficiente para para dirigir"));
+		System.out.printf("%s", (isHasCar ? "\nele(a) possui um carro "+carro.getModel()+" de cor "+carro.getColor()+" e placa "+carro.getLicensePlate() : " e não tem um carro!\n"));
 	}
 
 	public void setObterUmCarro(Carro carro) {

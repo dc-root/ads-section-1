@@ -2,16 +2,16 @@ package main;
 
 public class Carro {
 	private String model;
-	private String plate;
+	private String licensePlate;
 	private String color;
 	private int carSpeed;
 	private boolean isSwitchedOn;
 
 	private Pessoa proprietario;
 
-	public Carro(String model, String plate, String color) {
+	public Carro(String model, String licensePlate, String color) {
 		this.model = model;
-		this.plate = plate;
+		this.licensePlate = licensePlate;
 		this.color = color;
 		
 		this.carSpeed = 0;
@@ -27,17 +27,17 @@ public class Carro {
 			System.out.printf("\tO carro já está ligado!\n");
 			return;
 		}
-		System.out.println("O(a) "+proprietario.getName()+" esta ligando o carro...");
+		System.out.println("O(a) "+proprietario.getName()+" está ligando o carro...");
 		isSwitchedOn = true;
 		System.out.println("\tCarro ligado!");
 	}
 
 	public void desligar() {
 		if(!isSwitchedOn) {
-			System.out.printf("\tO carro já esta desligado!\n");
+			System.out.printf("\tO carro já está desligado!\n");
 			return;
 		} else if(carSpeed > 0) {
-			System.out.printf("\tO carro esta ligado com velocidade de %dkm/h, pare o carro antes de desliga-lo!\n", carSpeed);
+			System.out.printf("\tO carro está ligado com velocidade de %dkm/h, pare o carro antes de desliga-lo!\n", carSpeed);
 			return;
 		}
 		System.out.printf("O(a) "+proprietario.getName()+" está desligando o carro...\n");
@@ -74,8 +74,8 @@ public class Carro {
 		return model;
 	}
 
-	public String getPlate() {
-		return plate;
+	public String getLicensePlate() {
+		return licensePlate;
 	}
 
 	public String getColor() {
@@ -90,11 +90,24 @@ public class Carro {
 		return isSwitchedOn;
 	}
 
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public void setCarSpeed(int carSpeed) {
+		this.carSpeed = carSpeed;
+	}
+
 	public void setIsSwitchedOn(Boolean isSwitchedOn) {
 		this.isSwitchedOn = isSwitchedOn;
 	}
 
 	public void showSpacs() {
-		System.out.printf("\tO carro %s de placa %s e cor %s, esta %s%n", model, plate, color, (isSwitchedOn ? "ligado"+(carSpeed == 0 ? " e parado!" : ", com velocidade de "+carSpeed+"km/h!") : "desligado!"));
+		System.out.printf("\tO carro %s de placa %s e cor %s, esta %s%n", model, licensePlate, color, (isSwitchedOn ? "ligado"+(carSpeed == 0 ? " e parado!" : ", com velocidade de "+carSpeed+"km/h!") : "desligado!"));
 	}
 }
