@@ -15,6 +15,8 @@ public class FolhaPagamento {
 
 		System.out.println("Desconto: ");
 		float valorDescontos = leitor.nextFloat();
+
+		leitor.close();
 		
 		System.out.printf("\nFolha de pagamento:\n");
 		System.out.printf("Nome: %s\n", nome);

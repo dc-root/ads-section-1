@@ -6,5 +6,7 @@ public class CalculadoraPesosDasCargas {
 		int pesoTotalCargas = (int) (1033.49 + 849.88);
 		
 		System.out.println("Peso total das cargas: " + pesoTotalCargas);
+		System.out.println("Peso da carga 1: " + pesoCarga1);
+		System.out.println("Peso da carga 2: " + pesoCarga2);
 	}
 }

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class CalculoIMC {
 	public static void main(String[] args) {
 		Scanner leitor = new Scanner(System.in);
 
@@ -37,5 +37,7 @@ public class Main {
 				System.out.println("Obeso");
 			}
 		}
+
+		leitor.close();
 	}
 }

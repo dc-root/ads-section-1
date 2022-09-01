@@ -19,7 +19,7 @@ public class NumeroPrimo  {
         Scanner leitor = new Scanner(System.in);
 
         int numero = leitor.nextInt();
-        int cont=0;
+        leitor.close();
 
         if(isPrimeNumber(numero)) {
             System.out.print("eh um numero primo");
