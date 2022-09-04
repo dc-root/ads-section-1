@@ -6,34 +6,33 @@ public class Main {
 
 		Pessoa pessoa1 = new Pessoa("Fernanda", 25, true);
 		
-		pessoa1.showPersonalData();
+		pessoa1.showDatas();
 
-		pessoa1.setObterUmCarro(carro1);
-		
+		pessoa1.setWinCar(carro1);
 		pessoa1.sairDoCarro();
 
-		pessoa1.entrarNoCarro();
-		pessoa1.dirigirCarro();
+		// pessoa1.entrarNoCarro();
+		// pessoa1.dirigirCarro();
 
-		pessoa1.carro.acelerar();
-		pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
 
-		pessoa1.entrarNoCarro();
+		// pessoa1.entrarNoCarro();
 
-		pessoa1.sairDoCarro();
-		pessoa1.dirigirCarro();
+		// pessoa1.sairDoCarro();
+		// pessoa1.dirigirCarro();
 
-		pessoa1.carro.acelerar();
-		pessoa1.carro.acelerar();
-		pessoa1.carro.acelerar();
-		pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
 
-		pessoa1.pararOCarro();
-		pessoa1.carro.frear();
-		pessoa1.desligarCarro();
+		// pessoa1.pararOCarro();
+		// pessoa1.carro.frear();
+		// pessoa1.desligarCarro();
 
-		pessoa1.carro.acelerar();
+		// pessoa1.carro.acelerar();
 
-		pessoa1.showPersonalData();
+		// pessoa1.showPersonalData();
 	}
 }

@@ -20,14 +20,14 @@ public class Pessoa {
 	}
 
 	// Public Methods
-	public void showPersonalData() {
+	public void showDatas() {
 		System.out.printf("O(a) %s tem %d anos%s", name, age, (age >= 18 ? ", tem idade suficiente para para dirigir"+(isLicensed ? ", possui habilitação" : ", porem não possui habilitação") : ", não tem idade suficiente para para dirigir"));
 		System.out.printf("%s", (isHasCar ? "\nele(a) possui um carro "+carro.getModel()+" de cor "+carro.getColor()+" e placa "+carro.getLicensePlate() : " e não tem um carro!\n"));
 	}
 
-	public void setObterUmCarro(Carro carro) {
+	protected void setWinCar(Carro carro) {
 		this.carro = carro;
-		this.carro.setObterProprietario(this);
+		this.carro.setWinProprietario(this);
 
 		isHasCar = true;
 		System.out.println("Parabéns agora o(a) "+name+" tem um carro "+carro.getModel()+" :)");
@@ -114,11 +114,12 @@ public class Pessoa {
 		System.out.println("O(a) "+name+" desligou o carro!");
 	}
 
+	// Getts
 	public String getName() {
 		return name;
 	}
 
-	// Private Methods
+	// Setts
 	private void setIsDentroDoCarro(Boolean isDentroDoCarro) {
 		this.isDentroDoCarro = isDentroDoCarro;
 	} 
