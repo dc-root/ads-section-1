@@ -5,13 +5,13 @@ public class MediaSimples {
     public static void main(String[] args) {
         Scanner  leitor = new Scanner(System.in);
 
-        float A = leitor.nextInt();
-        float B = leitor.nextInt();
-        float C = leitor.nextInt();
-        float D = leitor.nextInt();
+        float A = leitor.nextFloat();
+        float B = leitor.nextFloat();
+        float C = leitor.nextFloat();
+        float D = leitor.nextFloat();
 
-        float MEDIA = (float)((Math.round(A*10.0)/10.0) + (Math.round(B*10.0)/10.0) + (Math.round(C*10.0)/10.0) + (Math.round(D*10.0)/10.0) / 4);
+        float MEDIA = (float)((A*10.0 /10.0) + (B*10.0 /10.0) + (C*10.0 /10.0) + (D*10.0 /10.0)) / 4;
 
-        System.out.println("MEDIA = "+MEDIA);
+        System.out.printf("MEDIA = %.5f\n\n\n", MEDIA);
     }
 }
