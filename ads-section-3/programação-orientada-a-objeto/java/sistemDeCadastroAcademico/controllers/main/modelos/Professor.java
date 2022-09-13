@@ -1,41 +1,71 @@
 package main.modelos;
-import java.util.ArrayList;
+
+import java.util.Objects;
 
 public class Professor extends Pessoa {
-    private int registro;
-    private ArrayList<String> disciplinas = new ArrayList<String>();
+    private String registro;
+    private String disciplina;
+
+    // private Turma turma;
 
     public Professor(){}
     public Professor(
         String nome,
-        int registro,
         String cpf,
         String telefone,
         String email,
-        ArrayList<String> disciplinas
+        String disciplina
     ) {
         this.nome = nome;
-        this.registro = registro;
+        this.registro = cpf;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
-        this.disciplinas = disciplinas;
+        this.disciplina = disciplina;
     }
-    
-    public String toString() {
-        return "| "+this.nome+" | "+this.registro+" | "+this.disciplinas+" |";
+    public Professor(
+        String nome,
+        String telefone,
+        String email,
+        String disciplina
+    ) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.disciplina = disciplina;
     }
-    public boolena equals(Object myObject) {
-        if(this == myObjec) return true;
-        if(myObjec == null || this.getClass() != myObjec.getClass()) return false;]
-
-        Professor prof = (Professor) myObject;
-        return Objects.equals(this.registro, prof.registro);
-    }
-    public int getRegistro() {
+    // Getts e Setts
+    public String getRegistro() {
         return registro;
     }
-    public void setRegistro(int registro) {
+    public void setRegistro(String registro) {
         this.registro = registro;
+    }
+    public String getDisciplina() {
+        return disciplina;
+    }
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    // public Turma getTurma() {
+    //     return this.turma;
+    // }
+    // protected void receberTurma(Turma turma) {
+    //     this.turma = turma;
+    // }
+
+    public String toString() {
+        return "| "+this.nome+" | "+this.registro+" | "+this.disciplina;
+    }
+    public boolean equals(Object myObject) {
+        if(this == myObject) return true;
+        if(myObject == null || this.getClass() != myObject.getClass()) return false;
+
+        Professor professor = (Professor) myObject;
+        return Objects.equals(registro, professor.registro);
+    }
+    public int hasCode() {
+        return Objects.hash(registro);
     }
 }

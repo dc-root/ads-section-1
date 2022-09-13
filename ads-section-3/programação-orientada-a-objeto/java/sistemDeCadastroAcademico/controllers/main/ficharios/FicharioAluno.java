@@ -14,10 +14,15 @@ public class FicharioAluno {
         this.entrada = new Scanner(System.in);
     }
 
+    // Getts e Setts
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
     public void cadastrar() {
         String nome, telefone, cpf, email;
 
-        System.out.println("\n ==== Cadastrar ALUNO ==== ");
+        System.out.println("\n ------------- CADASTRO ALUNO ------------- ");
         System.out.print("Nome: ");
         nome = entrada.nextLine();
 
@@ -29,18 +34,14 @@ public class FicharioAluno {
         
         System.out.print("Telefone: ");
         telefone = entrada.nextLine();
-            
+        
         Aluno aluno = new Aluno(nome, cpf, telefone, email);
         
         if (this.alunos.contains(aluno)){
             System.out.println("\n> Error: Não foi possivel cadastrar o aluno");
             System.out.println("> warning: Já existe um aluno com esse número de cpf cadastrado no sistem");
         } else {
-            try {
-                this.alunos.add(aluno);
-            } catch(Exception e) {
-                throw new Error("Não foi possivel cadastrar o aluno!");
-            }
+            this.alunos.add(aluno);
             System.out.println("\n> Success: Aluno cadastrado com sucesso!");
         }
     }
@@ -77,8 +78,8 @@ public class FicharioAluno {
         Aluno alunoaSerAlterado = this.alunos.stream()
             .filter(aluno -> aluno.getMatricula()
                 .equals(matricula)
-            ).findAny().orElse(null);
        
+            ).findAny().orElse(null);
         // A TRATAR: não permitir exclusão de alunos vinculados a turmas
         if(alunoaSerAlterado != null) {
             //this.consultar();
@@ -86,15 +87,18 @@ public class FicharioAluno {
             String option = entrada.nextLine();
 
             switch(option) {
-                case "y": case "Y": case "YES": case "yes":
+                case "y", "Y", "YES", "yes" -> {
                     if(this.alunos.remove(alunoaSerAlterado)) {
                         System.out.println("\n> Success: aluno(a) removido com sucesso!");
                     } else {
-                        throw new Error("Houve algum erro ao remover o aluno!"); 
+                        System.out.println("> warnin: houve algum erro ao remover o aluno!");
+                        return;
                     }
-                case "n": case "N": case "NO": case "no": return;
-                default:
+                }
+                case "n", "N", "NO", "no" -> { return; }
+                default -> {
                     System.out.println("\n> Error: opção invalida!");
+                }
             }
         }
     }
@@ -121,15 +125,18 @@ public class FicharioAluno {
             System.out.println("------------------------------------------");
             System.out.printf("| Disciplinas: \n");
             System.out.println("------------------------------------------");
+        } else {
+            System.out.println("\nError: Numero de matricula não encontrado! :(");
         }
     }
 
     public void relatorio() {
         System.out.println("\n[RELATÓRIO DE ALUNOS]");
         System.out.println("------------------------------------------");
-        for (Aluno aluno: alunos) {
-            System.out.println(aluno);
-            System.out.println("------------------------------------------");
-        }
+        this.alunos.stream()
+            .forEach(aluno -> {
+                System.out.println(aluno);
+                System.out.println("------------------------------------------");
+        });
     }
 }

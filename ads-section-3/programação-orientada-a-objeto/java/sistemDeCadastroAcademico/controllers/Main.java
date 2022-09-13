@@ -1,39 +1,36 @@
-import main.operacoes.OpAluno;
+import main.operacoes.*;
+import main.modelos.*;
 
 import java.util.Scanner;
-
-// completar os menus
-// todos devem ter os metodos cadastrar, alterar, excluir, consultar e relatorio
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        int operacaoGeral, operacaoCadastro;
+        ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+        ArrayList<Professor> profs = new ArrayList<Professor>();
+        ArrayList<Turma> turmas = new ArrayList<Turma>();
+
+        int opcao;
         do {
-            System.out.println("\n === SISTEM ACADÊMICO === ");
+            System.out.println("\n ###### SISTEM ACADÊMICO ###### ");
             System.out.println("1 - Aluno ");
             System.out.println("2 - Professor ");
             System.out.println("3 - Turmas ");
-            System.out.println("4 - Sair ");
+            System.out.println("0 - Sair ");
             System.out.print("Opção: ");
-            operacaoGeral = entrada.nextInt();
+            opcao = entrada.nextInt();
 
-            switch (operacaoGeral) {
-                case 1:
-                    OpAluno.operacaoAluno();
-                    break;
-                case 2:
-                    // OpProf.operacaoProfessor();
-                    break;
-                case 3:
-                    // OpTurmas.operacaoTurmas();
-                    break;
-                default:
-                    if (operacaoGeral != 4) {
-                        System.out.println("Opção inválida.");
-                    }
+            switch(opcao) {
+                case 1 -> OpAluno.operacaoAluno(alunos);
+                case 2 -> OpProfessor.operacaoProfessor(profs);
+                case 3 -> OpTurma.operacaoTurma(turmas, profs, alunos);
+                default -> {
+                    if (opcao != 0) System.out.println("Opção inválida!");
+                }
             }
-        } while ( operacaoGeral != 4);
+        } while (opcao != 0);
+        entrada.close();
     }
 }

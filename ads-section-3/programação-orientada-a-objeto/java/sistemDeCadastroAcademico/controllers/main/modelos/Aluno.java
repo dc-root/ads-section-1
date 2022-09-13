@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Aluno extends Pessoa {
     private String matricula;
+    
+    private Turma turma;
 
     public Aluno(){}
     public Aluno(
@@ -21,7 +23,14 @@ public class Aluno extends Pessoa {
 
     // Getts e Setts
     public String getMatricula() {
-        return matricula;
+        return this.matricula;
+    }
+
+    public Turma getTurma() {
+        return this.turma;
+    }
+    protected void entrarEmTurma(Turma turma) {
+        this.turma = turma;
     }
 
     public String toString() {
@@ -32,9 +41,9 @@ public class Aluno extends Pessoa {
         if(myObject == null || this.getClass() != myObject.getClass()) return false;
 
         Aluno aluno = (Aluno) myObject;
-        return Objects.equals(this.matricula, aluno.matricula);
+        return Objects.equals(matricula, aluno.matricula);
     }
     public int hashCode() {
-        return Objects.hash(this.matricula);
+        return Objects.hash(matricula);
     }
 }
