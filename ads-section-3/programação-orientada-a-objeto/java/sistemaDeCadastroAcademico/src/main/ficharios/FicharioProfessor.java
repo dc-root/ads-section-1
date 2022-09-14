@@ -21,66 +21,6 @@ public class FicharioProfessor {
         this.entrada = new Scanner(System.in);
     }
 
-    public void vincularATurma() {
-        System.out.print("Número do registro do professor: ");
-        String registro = entrada.nextLine();
-
-        System.out.print("Número do código da turma: ");
-        String codigo = entrada.nextLine();
-
-        Professor professoraSerVinculado = this.profs.stream()
-            .filter(prof -> prof.getRegistro()
-                .equals(registro)
-            ).findAny().orElse(null);
-
-        Turma turmaaSeVincular = this.turmas.stream()
-            .filter(turma -> turma.getCodigo()
-                .equals(codigo)
-            ).findAny().orElse(null);
-
-        if(professoraSerVinculado != null && turmaaSeVincular != null) {
-            if(turmaaSeVincular.getProfs().contains(professoraSerVinculado)) {
-                System.out.println("\n> Warning: Este professor já está vinculado a essa turma!");
-                return;
-            }
-            professoraSerVinculado.receberTurma(turmaaSeVincular);
-            
-            System.out.println("\n> Sucess:  professor vinculado a turma "+turmaaSeVincular.getNome()+" com suceso!");
-        } else {
-            System.out.println("\n> Error: Número de registro e/ou código da turma não encontrado!");
-        }
-    }
-
-    public void desvincularDeTurma() {
-        System.out.print("Numero do registro do professor: ");
-        String registro = entrada.nextLine();
-
-        System.out.print("Numero do código da turma: ");
-        String codigo = entrada.nextLine();
-        
-        Professor professoraSerDesvinculado = this.profs.stream()
-            .filter(prof -> prof.getRegistro()
-                .equals(registro)
-            ).findAny().orElse(null);
-
-        Turma turmaaSeDesvincular = this.turmas.stream()
-            .filter(turma -> turma.getCodigo()
-                .equals(codigo)
-            ).findAny().orElse(null);
-        
-            if(professoraSerDesvinculado != null && turmaaSeDesvincular != null) {
-                if(turmaaSeDesvincular.getProfs().contains(professoraSerDesvinculado)) {
-                    turmaaSeDesvincular.getProfs().remove(professoraSerDesvinculado);
-                    professoraSerDesvinculado.getTurmas().remove(turmaaSeDesvincular);
-                    System.out.println("\n> Sucess: Professor "+professoraSerDesvinculado.getNome()+" desvinculado com sucesso da turma "+turmaaSeDesvincular.getNome());
-                } else {
-                    System.out.println("\n> Warning: Este professor não consta na lista de matriculados da turma!");
-                }
-            } else {
-                System.out.println("\n> Error: Numero de registro e/ou código da turma não encontrado!");
-            }
-    }
-
     public void cadastrar() {
         String nome, telefone, cpf, email, disciplina;
 
@@ -114,7 +54,6 @@ public class FicharioProfessor {
     public void alterar() {
         System.out.print("Número do registro: ");
         String registro = entrada.nextLine();
-        String nome, telefone, email, disciplina;
         
         Professor professoraSerAlterado = this.profs.stream()
             .filter(prof -> prof.getRegistro()
@@ -123,30 +62,20 @@ public class FicharioProfessor {
 
         if(professoraSerAlterado != null) {
             System.out.printf("Nome: ");
-            nome = entrada.nextLine();
+            professoraSerAlterado.setNome(entrada.nextLine());
 
             System.out.printf("Telefone: ");
-            telefone = entrada.nextLine();
+            professoraSerAlterado.setTelefone(entrada.nextLine());;
 
             System.out.printf("Email: ");
-            email = entrada.nextLine();
+            professoraSerAlterado.setEmail(entrada.nextLine());
 
             System.out.printf("Disciplina: ");
-            disciplina = entrada.nextLine();
+            professoraSerAlterado.setDisciplina(entrada.nextLine());
 
-            Professor professor = new Professor(nome, telefone, email, disciplina);
-            if(this.profs.contains(professor)) {
-                System.out.println("\n> Error: Não foi possível cadastrar o professor");
-                System.out.println("> warning: Já existe um professor com algum dos dados cadastrado no sistem");
-                return;
-            }
-            professoraSerAlterado.setNome(nome);
-            professoraSerAlterado.setTelefone(telefone);
-            professoraSerAlterado.setEmail(email);
-            professoraSerAlterado.setDisciplina(disciplina);
             System.out.printf("\n> Success: Dados do(a) aluno(a) %s, atualizado com sucesso!\n", professoraSerAlterado.getNome());
         } else {
-            System.out.println("> Error: Número de regitro não encontrado!");
+            System.out.println("> Error: Número de registro do professor não encontrado!");
         }
     }
 
@@ -178,7 +107,7 @@ public class FicharioProfessor {
             }
         }  else {
             System.out.println("\n> Error: Houve um erro ao remover professor!");
-            System.out.println("\t> warning: Talvez você esteja tentando excluir uma professor que está matriculado em alguma turma\n\tdesvincule-o da turma antes de excluí-lo!");
+            System.out.println("\t> warning: Talvez você esteja tentando excluir um professor matriculado em alguma turma,\n\tdesvincule-o da turma antes de excluí-lo!");
         }
     }
 
@@ -208,6 +137,66 @@ public class FicharioProfessor {
         } else {
             System.out.println("\nError: Numero de registro não encontrado! :(");
         }
+    }
+
+    public void vincularATurma() {
+        System.out.print("Número do registro do professor: ");
+        String registro = entrada.nextLine();
+
+        System.out.print("Número do código da turma: ");
+        String codigo = entrada.nextLine();
+
+        Professor professoraSerVinculado = this.profs.stream()
+            .filter(prof -> prof.getRegistro()
+                .equals(registro)
+            ).findAny().orElse(null);
+
+        Turma turmaaSeVincular = this.turmas.stream()
+            .filter(turma -> turma.getCodigo()
+                .equals(codigo)
+            ).findAny().orElse(null);
+
+        if(professoraSerVinculado != null && turmaaSeVincular != null) {
+            if(turmaaSeVincular.getProfs().contains(professoraSerVinculado)) {
+                System.out.println("\n> Warning: Este professor já está vinculado a essa turma!");
+                return;
+            }
+            professoraSerVinculado.receberTurma(turmaaSeVincular);
+            
+            System.out.println("\n> Sucess:  professor vinculado a turma "+turmaaSeVincular.getNome()+" com suceso!");
+        } else {
+            System.out.println("\n> Error: Número de registro e/ou código da turma não encontrado!");
+        }
+    }
+
+    public void desvincularDeTurma() {
+        System.out.print("Número do registro do professor: ");
+        String registro = entrada.nextLine();
+
+        System.out.print("Numero do código da turma: ");
+        String codigo = entrada.nextLine();
+        
+        Professor professoraSerDesvinculado = this.profs.stream()
+            .filter(prof -> prof.getRegistro()
+                .equals(registro)
+            ).findAny().orElse(null);
+
+        Turma turmaaSeDesvincular = this.turmas.stream()
+            .filter(turma -> turma.getCodigo()
+                .equals(codigo)
+            ).findAny().orElse(null);
+        
+            if(professoraSerDesvinculado != null && turmaaSeDesvincular != null) {
+                if(turmaaSeDesvincular.getProfs().contains(professoraSerDesvinculado)) {
+                    turmaaSeDesvincular.getProfs().remove(professoraSerDesvinculado);
+                    professoraSerDesvinculado.getTurmas().remove(turmaaSeDesvincular);
+                    System.out.println("\n> Sucess: Professor "+professoraSerDesvinculado.getNome()+" desvinculado com sucesso da turma "+turmaaSeDesvincular.getNome());
+                } else {
+                    System.out.println("\n> Warning: Este professor não consta na lista de matriculados da turma!");
+                }
+            } else {
+                System.out.println("\n> Error: Número de registro e/ou código da turma não encontrado!");
+            }
     }
 
     public void relatorio() {

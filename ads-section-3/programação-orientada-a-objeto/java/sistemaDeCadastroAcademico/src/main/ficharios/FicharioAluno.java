@@ -99,7 +99,7 @@ public class FicharioAluno {
             }
         } else {
             System.out.println("\n> Error: Houve um erro ao remover o aluno!");
-            System.out.println("\t> warning: Talvez você esteja tentando excluir uma aluno que está matriculado em alguma turma\n\tdesvincule-o da turma antes de excluí-lo!");
+            System.out.println("\t> warning: Talvez você esteja tentando excluir um aluno matriculado em alguma turma,\n\tdesvincule-o da turma antes de excluí-lo!");
         }
     }
 

@@ -50,10 +50,9 @@ public class FicharioTurma {
 
         if(turmaaSerAlterada != null) {
             System.out.printf("Nome: ");
-
-            System.out.printf("\n> Success: O nome da turma %s agora e '%s'!\n", turmaaSerAlterada.getNome(), turmaaSerAlterada.setNome(entrada.nextLine()));
+            System.out.printf("\n> Success: O nome da turma %s foi alterado para '%s'!\n", turmaaSerAlterada.getNome(), turmaaSerAlterada.setNome(entrada.nextLine()));
         } else {
-            System.out.println("> Error: Número de matricula não encontrado!");
+            System.out.println("> Error: Número do código de turma não encontrado!");
         }
     }
 
@@ -86,7 +85,7 @@ public class FicharioTurma {
             }
         } else {
             System.out.println("\n> Error: Houve um erro ao remover turma!");
-            System.out.println("\t> warning: Talvez você esteja tentando excluir uma turma com alunos e/ou professores matriculados\n\tdesvincule-os da turma antes de excluí-la!");
+            System.out.println("\t> warning: Talvez você esteja tentando excluir uma turma com alunos e/ou professores matriculados,\n\tdesvincule-os da turma antes de excluí-la!");
         }
     }
 
@@ -162,7 +161,7 @@ public class FicharioTurma {
         System.out.print("Numero da matricula do aluno: ");
         String matricula = entrada.nextLine();
 
-        System.out.print("Numero do codigo da turma: ");
+        System.out.print("Número do código da turma: ");
         String codigo = entrada.nextLine();
 
         Aluno alunoaSerMatriculado = this.alunos.stream()
