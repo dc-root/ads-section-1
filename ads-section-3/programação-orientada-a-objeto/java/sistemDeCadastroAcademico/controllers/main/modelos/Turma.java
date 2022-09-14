@@ -35,12 +35,14 @@ public class Turma {
     public ArrayList<Professor> getProfs() {
         return this.profs;
     }
-    protected void receberProfessor(Professor prof) {
+    public void receberProfessor(Professor prof) {
         this.profs.add(prof);
     }
 
     public String toString() {
-        return "| "+this.nome+" | "+this.codigo+" | ["+this.getAlunos().size()+"] alunos";
+        return "| "+this.nome+" | "+this.codigo+" | ["+this.getAlunos().size()+"] "+
+            (this.getAlunos().size() > 1 ? "alunos" : "aluno")+" | ["+this.getProfs().size()+"] "+
+            (this.getProfs().size() > 1 ? "professores" : "professor");
     }
     public boolean equals(Object myObject) {
         if (this == myObject) return true;

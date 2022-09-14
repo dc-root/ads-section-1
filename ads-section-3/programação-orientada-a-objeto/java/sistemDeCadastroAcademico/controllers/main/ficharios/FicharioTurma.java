@@ -103,26 +103,23 @@ public class FicharioTurma {
             System.out.printf("\n[RELATÓRIO DA TURMA '%s']\n", turmaaSerConsultada.getNome().toUpperCase());
             System.out.println("-------------------------------------------------------------------------");
             System.out.printf("| Nome: %s\t\t| Código: %s\n", turmaaSerConsultada.getNome(), turmaaSerConsultada.getCodigo());
-            System.out.println("\n--- ALUNOS --------------------------------------------------------------\n");
+            System.out.println("--- ALUNOS --------------------------------------------------------------");
             if(turmaaSerConsultada.getAlunos().size() != 0) {
-                System.out.printf("%10s %20s %10s %10s\n", "NOME", "MATRICULA", "E-MAIL", "TELEFONE");
-                System.out.println("-------------------------------------------------------------------------");
                 turmaaSerConsultada.getAlunos().stream()
-                    .forEach(aluno -> System.out.format("%10s %20s %10s %10s\n", aluno.getNome(), aluno.getMatricula(), aluno.getEmail(),  aluno.getTelefone()));
+                    .forEach(aluno -> System.out.printf("%s\t\t%s\t%s\t%s\n", aluno.getNome(), aluno.getMatricula(), aluno.getEmail(),  aluno.getTelefone()));
+                System.out.println("-------------------------------------------------------------------------");
             } else {
                 System.out.println("> Nenhum aluno matriculado nessa turma!");
             }
 
-            System.out.println("\n--- PROFESSORES ---------------------------------------------------------\n");
+            System.out.println("\n--- PROFESSORES ---------------------------------------------------------");
             if(turmaaSerConsultada.getProfs().size() != 0) {
-                System.out.printf("%10s %20s %10s %10s\n", "NOME", "REGISTRO", "E-MAIL", "TELEFONE");
-                System.out.println("-------------------------------------------------------------------------");
                 turmaaSerConsultada.getProfs().stream()
-                    .forEach(prof -> System.out.format("%10s %20s %10s %10s\n", prof.getNome(), prof.getRegistro(), prof.getEmail(), prof.getTelefone()));
+                    .forEach(prof -> System.out.printf("%s\t\t%s\t%s\t%s\n", prof.getNome(), prof.getRegistro(), prof.getEmail(), prof.getTelefone()));
+                System.out.println("-------------------------------------------------------------------------");
             } else {
                 System.out.println("> Nenhum professor matriculado nessa turma!");
             }
-            System.out.println("\n-------------------------------------------------------------------------");
         } else {
             System.out.println("\nError: Código não encontrado! :(");
         }
@@ -147,17 +144,17 @@ public class FicharioTurma {
 
         if((alunoaSerMatriculado != null) && (turmaaSeMatricular != null)) {
             if(turmaaSeMatricular.getAlunos().contains(alunoaSerMatriculado)) {
-                System.out.println("warning: Aluno já está matriculado nessa turma!");
+                System.out.println("\n> warning: Aluno já está mtriculado nessa turma!");
                 return;
             } else if(alunoaSerMatriculado.getTurma() != null) {
-                System.out.println("\nwarning: Este aluno já está matriculado na turma "+alunoaSerMatriculado.getTurma().getNome());
+                System.out.println("\n> warning: Este aluno já está matriculado na turma "+alunoaSerMatriculado.getTurma().getNome());
                 return;
             } else {
                 turmaaSeMatricular.getAlunos().add(alunoaSerMatriculado);
-                System.out.println("\n> Sucess:  aluno matriculado com suceso!");
+                System.out.println("\n> Sucess: aluno(a) "+alunoaSerMatriculado.getNome()+" matriculado com suceso na turma "+turmaaSeMatricular.getNome());
             }
         } else {
-            System.out.println("\n> Error: Numero de matricula e/ou codigo da turma não encontrado!");
+            System.out.println("\n> Error: Numero de matricula do aluno e/ou codigo da turma não encontrado!");
         }
     }
 
@@ -181,12 +178,12 @@ public class FicharioTurma {
         if((alunoaSerMatriculado != null) && (turmaaSeMatricular != null)) {
             if(turmaaSeMatricular.getAlunos().contains(alunoaSerMatriculado)) {
                 turmaaSeMatricular.getAlunos().remove(alunoaSerMatriculado);
-                System.out.println("\n> Sucess: Aluno removido com sucesso!");
+                System.out.println("\n> Sucess: Aluno "+alunoaSerMatriculado.getNome()+"desmatriculado com sucesso da turma "+turmaaSeMatricular.getNome());
             } else {
                 System.out.println("\n> Warning: Este aluno não consta na lista de matriculados da turma!");
             }
         } else {
-            System.out.println("\n> Error: Numero de matricula e/ou codigo da turma não encontrado!");
+            System.out.println("\n> Error: Numero de matricula e/ou código da turma não encontrado!");
         }
     }
 
