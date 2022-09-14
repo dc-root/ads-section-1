@@ -29,6 +29,14 @@ public class Aluno extends Pessoa {
     public Turma getTurma() {
         return this.turma;
     }
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
+
+    public void receberTurma(Turma turma) {
+        this.turma = turma;
+        turma.receberAluno(this);
+    }
 
     public String toString() {
         return "| "+this.nome+" "+this.matricula;

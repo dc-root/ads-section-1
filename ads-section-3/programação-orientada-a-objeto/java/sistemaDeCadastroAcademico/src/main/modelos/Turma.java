@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Turma {
     private String nome;
     private String codigo;
+
     private Random gerador = new Random();
 
     private ArrayList<Aluno> alunos = new ArrayList<Aluno>();
@@ -34,8 +35,11 @@ public class Turma {
     public ArrayList<Professor> getProfs() {
         return this.profs;
     }
-    public void receberProfessor(Professor prof) {
+    protected void receberProfessor(Professor prof) {
         this.profs.add(prof);
+    }
+    protected void receberAluno(Aluno aluno) {
+        this.alunos.add(aluno);
     }
 
     public String toString() {

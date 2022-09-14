@@ -22,10 +22,10 @@ public class FicharioProfessor {
     }
 
     public void vincularATurma() {
-        System.out.print("Numero do registro do professor: ");
+        System.out.print("Número do registro do professor: ");
         String registro = entrada.nextLine();
 
-        System.out.print("Numero do código da turma: ");
+        System.out.print("Número do código da turma: ");
         String codigo = entrada.nextLine();
 
         Professor professoraSerVinculado = this.profs.stream()
@@ -43,11 +43,11 @@ public class FicharioProfessor {
                 System.out.println("\n> Warning: Este professor já está vinculado a essa turma!");
                 return;
             }
-            professoraSerVinculado.getTurmas().add(turmaaSeVincular);
-            turmaaSeVincular.receberProfessor(professoraSerVinculado);
+            professoraSerVinculado.receberTurma(turmaaSeVincular);
+            
             System.out.println("\n> Sucess:  professor vinculado a turma "+turmaaSeVincular.getNome()+" com suceso!");
         } else {
-            System.out.println("\n> Error: Numero de registro e/ou código da turma não encontrado!");
+            System.out.println("\n> Error: Número de registro e/ou código da turma não encontrado!");
         }
     }
 
@@ -112,7 +112,7 @@ public class FicharioProfessor {
     }
 
     public void alterar() {
-        System.out.print("Numero do registro: ");
+        System.out.print("Número do registro: ");
         String registro = entrada.nextLine();
         String nome, telefone, email, disciplina;
         
@@ -136,8 +136,8 @@ public class FicharioProfessor {
 
             Professor professor = new Professor(nome, telefone, email, disciplina);
             if(this.profs.contains(professor)) {
-                System.out.println("\n> Error: Não foi possivel cadastrar o professor");
-                System.out.println("> warning: Já existe um professor com ealgum dos dados cadastrado no sistem");
+                System.out.println("\n> Error: Não foi possível cadastrar o professor");
+                System.out.println("> warning: Já existe um professor com algum dos dados cadastrado no sistem");
                 return;
             }
             professoraSerAlterado.setNome(nome);
@@ -159,7 +159,7 @@ public class FicharioProfessor {
                 .equals(registro)
             ).findAny().orElse(null);
 
-        if(professoraSerRemovido != null && professoraSerRemovido.getTurmas() != null) {
+        if(professoraSerRemovido != null && professoraSerRemovido.getTurmas() == null) {
             System.out.print("Você realmente deseja excluir este professor? (yes/no): ");
             String option = entrada.nextLine();
 
@@ -200,8 +200,8 @@ public class FicharioProfessor {
             System.out.println("------------------------------------------");
             System.out.printf("| E-mail: %s\n", professoraSerConsultado.getEmail());
             System.out.println("------------------------------------------");
-            System.out.print("| Turma: ");
-            professoraSerConsultado.getTurmas().stream().forEach(turma -> System.out.print(turma.getNome()+" "));
+            System.out.print("| Turmas: ");
+            professoraSerConsultado.getTurmas().stream().forEach(turma -> System.out.print("["+turma.getNome()+"/"+turma.getCodigo()+"] "));
             System.out.println("\n------------------------------------------");
             System.out.printf("| Disciplina: %s\n", professoraSerConsultado.getDisciplina());
             System.out.println("------------------------------------------");

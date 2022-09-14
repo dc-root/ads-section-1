@@ -38,9 +38,6 @@ public class Professor extends Pessoa {
     public String getRegistro() {
         return registro;
     }
-    public void setRegistro(String registro) {
-        this.registro = registro;
-    }
     public String getDisciplina() {
         return disciplina;
     }
@@ -50,6 +47,11 @@ public class Professor extends Pessoa {
 
     public ArrayList<Turma> getTurmas() {
         return this.turmas;
+    }
+    
+    public void receberTurma(Turma turma) {
+        this.turmas.add(turma);
+        turma.receberProfessor(this);
     }
 
     public String toString() {

@@ -73,18 +73,19 @@ public class FicharioAluno {
         System.out.print("Numero da matricula do aluno a ser excluido: ");
         String matricula = entrada.nextLine();
 
-        Aluno alunoaSerAlterado = this.alunos.stream()
+        Aluno alunoaSerExcluido = this.alunos.stream()
             .filter(aluno -> aluno.getMatricula()
                 .equals(matricula)
        
             ).findAny().orElse(null);
-        if(alunoaSerAlterado != null && alunoaSerAlterado.getTurma() != null) {
+
+        if(alunoaSerExcluido != null && alunoaSerExcluido.getTurma() == null) {
             System.out.print("Você realmente deseja excluir este aluno? (yes/no): ");
             String option = entrada.nextLine();
 
             switch(option) {
                 case "y", "Y", "YES", "yes" -> {
-                    if(this.alunos.remove(alunoaSerAlterado)) {
+                    if(this.alunos.remove(alunoaSerExcluido)) {
                         System.out.println("\n> Success: aluno(a) removido com sucesso!");
                     } else {
                         System.out.println("> warnin: houve algum erro ao remover o aluno!");
@@ -120,7 +121,7 @@ public class FicharioAluno {
             System.out.println("------------------------------------------");
             System.out.printf("| E-mail: %s\n", alunoaSerConsultado.getEmail());
             System.out.println("------------------------------------------");
-            System.out.printf("| Turma: %s\n", (alunoaSerConsultado.getTurma() != null ? alunoaSerConsultado.getTurma() : ""));
+            System.out.printf("| Turma: %s\n", (alunoaSerConsultado.getTurma() != null ? alunoaSerConsultado.getTurma().getNome()+"/"+alunoaSerConsultado.getTurma().getCodigo() : ""));
             System.out.println("------------------------------------------");
             System.out.printf("| Disciplinas: \n");
             System.out.println("------------------------------------------");

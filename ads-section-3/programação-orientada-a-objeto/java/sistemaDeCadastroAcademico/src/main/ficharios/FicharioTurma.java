@@ -35,7 +35,7 @@ public class FicharioTurma {
         } else {
             this.turmas.add(turma);
             System.out.println("\n> Success: Turma registrada com sucesso!");
-            System.out.println("O Codigo gerado para a turma "+turma.getNome()+" e: "+turma.getCodigo());
+            System.out.println("O Código gerado para a turma "+turma.getNome()+" e: "+turma.getCodigo());
         }
     }
 
@@ -91,7 +91,7 @@ public class FicharioTurma {
     }
 
     public void consultar() {
-        System.out.print("\nNumero do codigo da turma: ");
+        System.out.print("\nNumero do código da turma: ");
         String codigo = entrada.nextLine();
 
         Turma turmaaSerConsultada = this.turmas.stream()
@@ -129,7 +129,7 @@ public class FicharioTurma {
         System.out.print("Numero da matricula do aluno: ");
         String matricula = entrada.nextLine();
 
-        System.out.print("Numero do codigo da turma: ");
+        System.out.print("Numero do código da turma: ");
         String codigo = entrada.nextLine();
 
         Aluno alunoaSerMatriculado = this.alunos.stream()
@@ -144,17 +144,17 @@ public class FicharioTurma {
 
         if((alunoaSerMatriculado != null) && (turmaaSeMatricular != null)) {
             if(turmaaSeMatricular.getAlunos().contains(alunoaSerMatriculado)) {
-                System.out.println("\n> warning: Aluno já está mtriculado nessa turma!");
+                System.out.println("\n> warning: Aluno(a) já está mtriculado(a) nessa turma!");
                 return;
             } else if(alunoaSerMatriculado.getTurma() != null) {
-                System.out.println("\n> warning: Este aluno já está matriculado na turma "+alunoaSerMatriculado.getTurma().getNome());
+                System.out.println("\n> warning: Este aluno(a) já está matriculado(a) na turma "+alunoaSerMatriculado.getTurma().getNome());
                 return;
             } else {
-                turmaaSeMatricular.getAlunos().add(alunoaSerMatriculado);
-                System.out.println("\n> Sucess: aluno(a) "+alunoaSerMatriculado.getNome()+" matriculado com suceso na turma "+turmaaSeMatricular.getNome());
+                alunoaSerMatriculado.receberTurma(turmaaSeMatricular);
+                System.out.println("\n> Sucess: aluno(a) "+alunoaSerMatriculado.getNome()+" matriculado(a) com suceso na turma "+turmaaSeMatricular.getNome());
             }
         } else {
-            System.out.println("\n> Error: Numero de matricula do aluno e/ou codigo da turma não encontrado!");
+            System.out.println("\n> Error: Numero de matricula do aluno e/ou código da turma não encontrado!");
         }
     }
 
@@ -163,7 +163,7 @@ public class FicharioTurma {
         String matricula = entrada.nextLine();
 
         System.out.print("Numero do codigo da turma: ");
-        String codigo = entrada.nextLine(); 
+        String codigo = entrada.nextLine();
 
         Aluno alunoaSerMatriculado = this.alunos.stream()
             .filter(aluno -> aluno.getMatricula()
@@ -178,7 +178,8 @@ public class FicharioTurma {
         if((alunoaSerMatriculado != null) && (turmaaSeMatricular != null)) {
             if(turmaaSeMatricular.getAlunos().contains(alunoaSerMatriculado)) {
                 turmaaSeMatricular.getAlunos().remove(alunoaSerMatriculado);
-                System.out.println("\n> Sucess: Aluno "+alunoaSerMatriculado.getNome()+"desmatriculado com sucesso da turma "+turmaaSeMatricular.getNome());
+                alunoaSerMatriculado.setTurma(null);
+                System.out.println("\n> Sucess: Aluno(a) "+alunoaSerMatriculado.getNome()+" foi desmatriculado(a) com sucesso da turma "+turmaaSeMatricular.getNome());
             } else {
                 System.out.println("\n> Warning: Este aluno não consta na lista de matriculados da turma!");
             }
