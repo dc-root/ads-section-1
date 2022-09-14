@@ -17,7 +17,6 @@ public class Turma {
         this.codigo = ""+gerador.nextInt(10000000);
     }
 
-    // Getts
     public String getCodigo() {
         return codigo;
     }

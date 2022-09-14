@@ -13,8 +13,6 @@ public class FicharioAluno {
         this.alunos = alunos;
         this.entrada = new Scanner(System.in);
     }
-
-    // Getts e Setts
     public ArrayList<Aluno> getAlunos() {
         return alunos;
     }

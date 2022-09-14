@@ -22,8 +22,7 @@ public class Aluno extends Pessoa {
         this.telefone = telefone;
         this.email = email;
     }
-
-    // Getts e Setts
+    
     public String getMatricula() {
         return this.matricula;
     }

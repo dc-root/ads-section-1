@@ -35,7 +35,6 @@ public class Professor extends Pessoa {
         this.email = email;
         this.disciplina = disciplina;
     }
-    // Getts e Setts
     public String getRegistro() {
         return registro;
     }
