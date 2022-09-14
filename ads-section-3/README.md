@@ -8,19 +8,22 @@
 ```java
 public class Person {
     private String name;
-	private String message;
+    private String message;
 
-    public Person(String name, String message) {
+    public Person(
+        String name,
+        String message
+    ) {
 		this.name = name;
 		this.message = message;
-	}
+    }
 
     public String showYourself() {
         return this.message+"\n\tmy name is "+this.name;
     }
 
     public static void main(String[] args) {
-        Person githubMascot = new Person("Octocat", "Ola pessoas! :]");
+        Person githubMascot = new Person("Octocat", "Hello people! :]");
         System.out.printf(githubMascot.showYourself());
     }
 }
