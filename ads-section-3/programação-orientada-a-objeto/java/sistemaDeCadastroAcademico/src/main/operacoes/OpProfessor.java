@@ -23,7 +23,7 @@ public class OpProfessor {
             System.out.println("3 - Excluir Professor ");
             System.out.println("4 - Consultar Professor ");
             System.out.println("5 - Relatório do Professor ");
-            System.out.println("6 - Vincular professor em uma turma ");
+            System.out.println("6 - Vincular professor a uma turma ");
             System.out.println("7 - Desvincular professor de uma turma ");
             System.out.println("0 - Voltar ao menu principal");
             System.out.print("Opção: ");
