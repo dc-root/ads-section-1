@@ -14,8 +14,8 @@ public class Person {
         String name,
         String message
     ) {
-		this.name = name;
-		this.message = message;
+        this.name = name;
+        this.message = message;
     }
 
     public String showYourself() {
