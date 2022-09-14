@@ -33,6 +33,5 @@ public class OpAluno {
                 }
             }
         } while (opcao != 0);
-        entrada.close();
     }
 }

@@ -1,17 +1,53 @@
 package main.ficharios;
 
 import main.modelos.Professor;
+import main.modelos.Turma;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class FicharioProfessor {
-    private ArrayList<Professor> profs;
     private Scanner entrada;
 
-    public FicharioProfessor(ArrayList<Professor> profs) {
+    private ArrayList<Professor> profs;
+    private ArrayList<Turma> turmas;
+
+    public FicharioProfessor(
+        ArrayList<Professor> profs, 
+        ArrayList<Turma> turmas
+    ) {
         this.profs = profs;
+        this.turmas = turmas;
         this.entrada = new Scanner(System.in);
+    }
+
+    public void vincularATurma() {
+        System.out.print("Numero do registro do professor: ");
+        String registro = entrada.nextLine();
+
+        System.out.print("Numero do código da turma: ");
+        String codigo = entrada.nextLine();
+
+        Professor professoraSerVinculado = this.profs.stream()
+            .filter(prof -> prof.getRegistro()
+                .equals(registro)
+            ).findAny().orElse(null);
+
+        Turma turmaaSeVincular = this.turmas.stream()
+            .filter(turma -> turma.getCodigo()
+                .equals(codigo)
+            ).findAny().orElse(null);
+
+        if(professoraSerVinculado != null && turmaaSeVincular != null) {
+            if(turmaaSeVincular.getProfs().contains(professoraSerVinculado)) {
+                System.out.println("\n> Warning: Este professor já está vinculado a essa turma!");
+                return;
+            }
+            professoraSerVinculado.getTurmas().add(turmaaSeVincular);
+            System.out.println("\n> Sucess:  professor vinculado a turma "+turmaaSeVincular.getNome()+" com suceso!");
+        } else {
+            System.out.println("\n> Error: Numero de registro e/ou código da turma não encontrado!");
+        }
     }
 
     public void cadastrar() {
@@ -91,10 +127,8 @@ public class FicharioProfessor {
             .filter(prof -> prof.getRegistro()
                 .equals(registro)
             ).findAny().orElse(null);
-       
-        // A TRATAR: não permitir exclusão de alunos vinculados a turmas
-        if(professoraSerRemovido != null) {
-            //this.consultar();
+
+        if(professoraSerRemovido != null && professoraSerRemovido.getTurmas() != null) {
             System.out.print("Você realmente deseja excluir este professor? (yes/no): ");
             String option = entrada.nextLine();
 
@@ -106,13 +140,14 @@ public class FicharioProfessor {
                         System.out.println("> warning: houve algum erro ao remover o professor!");
                     }
                 }
-                case "n", "N", "NO", "no" -> {
-                    return;
-                }
+                case "n", "N", "NO", "no" -> { return; }
                 default -> {
                     System.out.println("\n> Error: opção invalida!");
                 }
             }
+        }  else {
+            System.out.println("\n> Error: Houve um erro ao remover professor!");
+            System.out.println("\t> warning: Talvez você esteja tentando excluir uma professor que está matriculado em alguma turma\n\tdesvincule-o da turma antes de excluí-lo!");
         }
     }
 
@@ -134,8 +169,9 @@ public class FicharioProfessor {
             System.out.println("------------------------------------------");
             System.out.printf("| E-mail: %s\n", professoraSerConsultado.getEmail());
             System.out.println("------------------------------------------");
-            System.out.printf("| Turma: \n");
-            System.out.println("------------------------------------------");
+            System.out.print("| Turma: ");
+            professoraSerConsultado.getTurmas().stream().forEach(turma -> System.out.print(turma.getNome()+" "));
+            System.out.println("\n------------------------------------------");
             System.out.printf("| Disciplina: %s\n", professoraSerConsultado.getDisciplina());
             System.out.println("------------------------------------------");
         } else {

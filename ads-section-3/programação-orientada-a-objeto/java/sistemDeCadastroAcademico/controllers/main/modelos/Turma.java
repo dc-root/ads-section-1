@@ -9,8 +9,8 @@ public class Turma {
     private String codigo;
     private Random gerador = new Random();
 
-    private ArrayList<Aluno> alunos;
-    // private ArrayList<Professor> profs;
+    private ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+    private ArrayList<Professor> profs = new ArrayList<Professor>();
 
     public Turma(String nome) {
         this.nome = nome;
@@ -24,27 +24,23 @@ public class Turma {
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome) {
+    public String setNome(String nome) {
         this.nome = nome;
+        return nome;
     }
     
     public ArrayList<Aluno> getAlunos() {
         return this.alunos;
     }
-    protected void receberAluno(Aluno aluno) {
-        this.alunos.add(aluno);
-        aluno.entrarEmTurma(this);
+    public ArrayList<Professor> getProfs() {
+        return this.profs;
     }
-    // public ArrayList<Professor> getProfs() {
-    //     return this.profs;
-    // }
-    // protected void receberProfessor(Professor prof) {
-    //     this.profs.add(prof);
-    //     prof.receberTurma(this);
-    // }
+    protected void receberProfessor(Professor prof) {
+        this.profs.add(prof);
+    }
 
     public String toString() {
-        return "| "+this.nome+" | "+this.codigo;
+        return "| "+this.nome+" | "+this.codigo+" | ["+this.getAlunos().size()+"] alunos";
     }
     public boolean equals(Object myObject) {
         if (this == myObject) return true;

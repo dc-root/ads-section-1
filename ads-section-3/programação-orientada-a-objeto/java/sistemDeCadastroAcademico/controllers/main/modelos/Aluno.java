@@ -1,11 +1,13 @@
 package main.modelos;
 
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class Aluno extends Pessoa {
     private String matricula;
     
     private Turma turma;
+    // private ArrayList<String> disciplinas = new ArrayList<String>();
 
     public Aluno(){}
     public Aluno(
@@ -25,12 +27,8 @@ public class Aluno extends Pessoa {
     public String getMatricula() {
         return this.matricula;
     }
-
     public Turma getTurma() {
         return this.turma;
-    }
-    protected void entrarEmTurma(Turma turma) {
-        this.turma = turma;
     }
 
     public String toString() {

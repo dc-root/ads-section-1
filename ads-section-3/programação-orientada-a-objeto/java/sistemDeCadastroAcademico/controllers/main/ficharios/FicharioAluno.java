@@ -80,9 +80,7 @@ public class FicharioAluno {
                 .equals(matricula)
        
             ).findAny().orElse(null);
-        // A TRATAR: não permitir exclusão de alunos vinculados a turmas
-        if(alunoaSerAlterado != null) {
-            //this.consultar();
+        if(alunoaSerAlterado != null && alunoaSerAlterado.getTurma() != null) {
             System.out.print("Você realmente deseja excluir este aluno? (yes/no): ");
             String option = entrada.nextLine();
 
@@ -100,6 +98,9 @@ public class FicharioAluno {
                     System.out.println("\n> Error: opção invalida!");
                 }
             }
+        } else {
+            System.out.println("\n> Error: Houve um erro ao remover o aluno!");
+            System.out.println("\t> warning: Talvez você esteja tentando excluir uma aluno que está matriculado em alguma turma\n\tdesvincule-o da turma antes de excluí-lo!");
         }
     }
 
@@ -107,21 +108,21 @@ public class FicharioAluno {
         System.out.print("Numero da matricula do aluno: ");
         String matricula = entrada.nextLine();
 
-        Aluno alunoaSerAlterado = this.alunos.stream()
+        Aluno alunoaSerConsultado = this.alunos.stream()
             .filter(aluno -> aluno.getMatricula()
                 .equals(matricula)
             ).findAny().orElse(null);
         
-        if(alunoaSerAlterado != null) {
-            System.out.printf("\n[RELATÓRIO DO(A) ALUNO(A) %s]\n", alunoaSerAlterado.getNome().toUpperCase());
+        if(alunoaSerConsultado != null) {
+            System.out.printf("\n[RELATÓRIO DO(A) ALUNO(A) %s]\n", alunoaSerConsultado.getNome().toUpperCase());
             System.out.println("------------------------------------------");
-            System.out.printf("| Número de matricula: %s\n", alunoaSerAlterado.getMatricula());
+            System.out.printf("| Número de matricula: %s\n", alunoaSerConsultado.getMatricula());
             System.out.println("------------------------------------------");
-            System.out.printf("| Telefone: %s\n", alunoaSerAlterado.getTelefone());
+            System.out.printf("| Telefone: %s\n", alunoaSerConsultado.getTelefone());
             System.out.println("------------------------------------------");
-            System.out.printf("| E-mail: %s\n", alunoaSerAlterado.getEmail());
+            System.out.printf("| E-mail: %s\n", alunoaSerConsultado.getEmail());
             System.out.println("------------------------------------------");
-            System.out.printf("| Turma: \n");
+            System.out.printf("| Turma: %s\n", (alunoaSerConsultado.getTurma() != null ? alunoaSerConsultado.getTurma() : ""));
             System.out.println("------------------------------------------");
             System.out.printf("| Disciplinas: \n");
             System.out.println("------------------------------------------");
