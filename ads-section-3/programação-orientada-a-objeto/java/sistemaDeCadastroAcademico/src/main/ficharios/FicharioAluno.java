@@ -6,8 +6,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class FicharioAluno {
-    private ArrayList<Aluno> alunos;
     private Scanner entrada;
+
+    private ArrayList<Aluno> alunos;
 
     public FicharioAluno(ArrayList<Aluno> alunos) {
         this.alunos = alunos;

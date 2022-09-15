@@ -1,5 +1,7 @@
 package main.modelos;
 
+import java.util.Objects;
+
 public class Pessoa {
     protected String nome;
     protected String cpf;

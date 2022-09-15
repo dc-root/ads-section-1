@@ -4,6 +4,7 @@ import main.ficharios.FicharioProfessor;
 
 import main.modelos.Professor;
 import main.modelos.Turma;
+import main.modelos.Aluno;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -11,10 +12,11 @@ import java.util.ArrayList;
 public class OpProfessor {
     public static void operacaoProfessor(
         ArrayList<Professor> profs,
-        ArrayList<Turma> turmas
+        ArrayList<Turma> turmas,
+        ArrayList<Aluno> alunos
     ) {
         Scanner entrada = new Scanner(System.in);
-        FicharioProfessor ficharioProfessor = new FicharioProfessor(profs, turmas);
+        FicharioProfessor ficharioProfessor = new FicharioProfessor(profs, turmas, alunos);
         int opcao;
         do {
             System.out.println("\n ##### PROFESSOR ##### ");

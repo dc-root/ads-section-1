@@ -1,7 +1,6 @@
 package main.ficharios;
 
-import main.modelos.Professor;
-import main.modelos.Turma;
+import main.modelos.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -11,13 +10,16 @@ public class FicharioProfessor {
 
     private ArrayList<Professor> profs;
     private ArrayList<Turma> turmas;
+    private ArrayList<Aluno> alunos;
 
     public FicharioProfessor(
         ArrayList<Professor> profs, 
-        ArrayList<Turma> turmas
+        ArrayList<Turma> turmas,
+        ArrayList<Aluno> alunos
     ) {
         this.profs = profs;
         this.turmas = turmas;
+        this.alunos = alunos;
         this.entrada = new Scanner(System.in);
     }
 
@@ -156,8 +158,20 @@ public class FicharioProfessor {
                 .equals(codigo)
             ).findAny().orElse(null);
 
-        if(professoraSerVinculado != null && turmaaSeVincular != null) {
+        Aluno pessoa = new Aluno(
+            professoraSerVinculado.getNome(),
+            professoraSerVinculado.getCpf(),
+            professoraSerVinculado.getTelefone(),
+            professoraSerVinculado.getEmail()
+        );
+        
+        if(this.alunos.contains(pessoa)) {
+            System.out.println("\n> Error: Não foi possivel vincular professor a turma");
+            System.out.println("> warning: Essa pessoa já está cadastrada como aluno nessa turma!");
+            return;
+        } else if(professoraSerVinculado != null && turmaaSeVincular != null) {
             if(turmaaSeVincular.getProfs().contains(professoraSerVinculado)) {
+                System.out.println("\n> Error: Não foi possivel vincular professor a turma");
                 System.out.println("\n> Warning: Este professor já está vinculado a essa turma!");
                 return;
             }
