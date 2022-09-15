@@ -26,9 +26,10 @@ div.top-menubar  {
     align-items: center;
     justify-content: flex-end;
 
-    height: 72px;
+    height: 70px;
     padding: 0 50px;
     background: rgba(36, 36, 36, .7);
+    backdrop-filter: saturate(50%) blur(8px);
 }
 
 div.top-menubar .logo-search-bar {
@@ -171,7 +172,7 @@ main.content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 72px;
+    padding-top: 70px;
 }
 
 main.content h2 {
