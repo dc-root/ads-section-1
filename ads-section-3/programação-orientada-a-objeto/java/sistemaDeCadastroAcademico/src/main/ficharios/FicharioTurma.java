@@ -10,13 +10,16 @@ public class FicharioTurma {
 
     private ArrayList<Turma> turmas;
     private ArrayList<Aluno> alunos;
+    private ArrayList<Professor> profs;
 
     public FicharioTurma(
         ArrayList<Turma> turmas,
-        ArrayList<Aluno> alunos
+        ArrayList<Aluno> alunos,
+        ArrayList<Professor> profs
     ) {
         this.turmas = turmas;
         this.alunos = alunos;
+        this.profs = profs;
         this.entrada = new Scanner(System.in);
     }
 
@@ -140,8 +143,19 @@ public class FicharioTurma {
             .filter(turma -> turma.getCodigo()
                 .equals(codigo)
             ).findAny().orElse(null);
+        
+        Professor pessoa = new Professor(
+            alunoaSerMatriculado.getNome(),
+            alunoaSerMatriculado.getCpf(),
+            alunoaSerMatriculado.getTelefone(),
+            alunoaSerMatriculado.getEmail()
+        );
 
-        if((alunoaSerMatriculado != null) && (turmaaSeMatricular != null)) {
+        if (this.profs.contains(pessoa)) {
+            System.out.println("\n> Error: Não foi possivel matricular aluno");
+            System.out.println("> warning: Essa pessoa já está cadastrada como professor nessa turma!");
+            return;
+        } else if((alunoaSerMatriculado != null) && (turmaaSeMatricular != null)) {
             if(turmaaSeMatricular.getAlunos().contains(alunoaSerMatriculado)) {
                 System.out.println("\n> warning: Aluno(a) já está mtriculado(a) nessa turma!");
                 return;

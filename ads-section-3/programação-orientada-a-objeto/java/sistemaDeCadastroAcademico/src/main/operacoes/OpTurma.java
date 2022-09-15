@@ -2,6 +2,7 @@ package main.operacoes;
 
 import main.modelos.Turma;
 import main.modelos.Aluno;
+import main.modelos.Professor;
 
 import main.ficharios.FicharioTurma;
 
@@ -11,10 +12,11 @@ import java.util.Scanner;
 public class OpTurma {
     public static void operacaoTurma(
         ArrayList<Turma> turmas,
-        ArrayList<Aluno> alunos
+        ArrayList<Aluno> alunos,
+        ArrayList<Professor> profs
     ) {
         Scanner entrada = new Scanner(System.in);
-        FicharioTurma ficharioTurma = new FicharioTurma(turmas, alunos);
+        FicharioTurma ficharioTurma = new FicharioTurma(turmas, alunos, profs);
         int opcao;
         do {
             System.out.println("\n ##### TURMAS ##### ");

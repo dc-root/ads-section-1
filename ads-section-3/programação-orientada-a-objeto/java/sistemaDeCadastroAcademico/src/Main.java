@@ -25,7 +25,7 @@ public class Main {
             switch(opcao) {
                 case 1 -> OpAluno.operacaoAluno(alunos);
                 case 2 -> OpProfessor.operacaoProfessor(profs, turmas, alunos);
-                case 3 -> OpTurma.operacaoTurma(turmas, alunos);
+                case 3 -> OpTurma.operacaoTurma(turmas, alunos, profs);
                 default -> {
                     if (opcao != 0) System.out.println("Opção inválida!");
                 }
