@@ -24,7 +24,6 @@ header.top-bar {
 nav.top-menubar  {
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
 
     height: 70px;
     padding: 0 50px;
