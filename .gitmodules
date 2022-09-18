@@ -1,6 +1,6 @@
 [submodule "ads-section-3/programação-para-web/pw1-2022-02-atividade-aula"]
 	path = ads-section-3/programação-para-web/pw1-atividades
 	url = https://github.com/dsalinux/pw1-2022-02-atividade-aula.git
-[submodule "ads-section-3/programação-para-web/challenges/stay-menu-bar"]
-	path = ads-section-3/programação-para-web/challenges/stay-menu-bar
-	url = git@github.com:dc7devs/stay-menu-bar.git
+[submodule "ads-section-3/programação-para-web/challenges/stray-menu-bar"]
+	path = ads-section-3/programação-para-web/challenges/stray-menu-bar
+	url = git@github.com:dc7devs/stray-menu-bar.git
