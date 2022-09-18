@@ -24,7 +24,7 @@ header.top-bar {
 nav.top-menubar  {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 
     height: 70px;
     padding: 0 50px;
@@ -50,56 +50,47 @@ nav.top-menubar .logo-search-bar img {
     margin-right: 3px;
 }
 
-nav.top-menubar .logo-search-bar div {
+nav.top-menubar .logo-search-bar .search {
     display: flex;
     align-items: center;
 
     border-radius: 11px;
     padding: 0 10px;
+    cursor: pointer;
 
     margin-left: 32px;
     height: 43px;
     width: max-content;
 
+    transition: width .3s;
+
+    color: #e0e0e0;
     background: #1a1a1a;
 }
-nav.top-menubar .logo-search-bar div:hover {
+nav.top-menubar .logo-search-bar .search:hover {
     box-shadow: 0 0 0 1px #936ae0;
     outline: .01px #936ae0;
 }
 
-nav.top-menubar .logo-search-bar div svg.search-icon {
+nav.top-menubar .logo-search-bar .search svg.search-icon {
     width: 15px;
     color:#e0e0e0;
     margin-right: 6px;
 }
-nav.top-menubar .logo-search-bar div input[type=search] {
-    width: 80px;
-    height: 80%;
-    padding: 13px 0 10px;
-
-    background: none;
-    
-    font: 600 sans-serif;
+nav.top-menubar .logo-search-bar .search div {
+    display: inline-block;
     color: #e0e0e0;
-    border: 0;
-    transition: width .3s;
+    opacity: .6;
 }
-nav.top-menubar .logo-search-bar div input[type=search]:focus,
-nav.top-menubar .logo-search-bar div input[type=search]:hover {
-    width: 170px;
-
-    border: 0;
-    box-shadow: 0 0 0 0;
-    outline: 0;
+nav.top-menubar .logo-search-bar .search .search-txt {
+    font-size: 13px;
+    margin-right: 6px;
 }
 
-nav.top-menubar .logo-search-bar div input[type=search]::placeholder {
-    font: 600 14px sans-serif;
-}
-
-nav.top-menubar .logo-search-bar div input[type=search]:hover::placeholder {
-    color: #afafaf;
+nav.top-menubar .logo-search-bar .search .key-ctrl-k {
+    border: 1px solid #e0e0e0;
+    padding: 1px 3px;
+    border-radius: 5px;
 }
 
 nav.top-menubar .menus {
@@ -229,4 +220,36 @@ main.content button {
     background-color: #936ae0;
     border: none;
     color: #fff;
+}
+
+@media (max-width: 1000px) {
+    nav.top-menubar {
+        padding: 0 5px;
+    }
+
+    nav.top-menubar .logo-search-bar {
+        margin-left: 10px;
+    }
+
+    nav.top-menubar .menus li {
+        padding: 0 6px;
+    }
+
+    nav.top-menubar .menus li a {
+        font-size: 18px;
+    }
+
+    nav.top-menubar .ph-dots-three {
+        display: inline;
+
+        font-size: 25px;
+        font-weight: 600;
+        font-family: sans-serif;
+        padding-right: 20px;
+        cursor: pointer;
+    }
+
+    nav.top-menubar .social-media {
+        display: none;
+    }
 }
