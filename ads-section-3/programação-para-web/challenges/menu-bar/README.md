@@ -1,1 +1,0 @@
-## STRAY MENU BAR
