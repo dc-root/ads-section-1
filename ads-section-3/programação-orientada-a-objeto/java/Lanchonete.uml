@@ -1,0 +1,20 @@
+@startuml
+class Pedido extends Cliente {
+    -numero do pedido: int
+    -nome do atendente: String
+    -{static} meta diaria de atendimento: int
+    -produto: Produto
+}
+class Produto {
+    -codigo: int
+    -valor: double
+    -quantidade: int
+}
+class Cliente {
+    #nome: String
+    #CPF: String
+}
+class Atendente {
+    
+}
+@enduml
