@@ -7,3 +7,6 @@
 [submodule "ads-section-3/programação-orientada-a-objeto/java/academic-record-system"]
 	path = ads-section-3/programação-orientada-a-objeto/java/academic-record-system
 	url = https://github.com/dc7devs/academic-record-system
+[submodule "ads-section-3/programação-orientada-a-objeto/java/consultation-management-system"]
+	path = ads-section-3/programação-orientada-a-objeto/java/consultation-management-system
+	url = git@github.com:dc7devs/consultation-management-system.git
