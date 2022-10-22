@@ -8,14 +8,14 @@ public class Main {
                 ArrayList<Aluno> alunos = new ArrayList<>();
                 ArrayList<Professor> profs = new ArrayList<>();
                 
-                GenericFichario<Aluno> operacaoAluno = new GenericFichario<>(Aluno, alunos);
-                GenericFichario<Professor> operacaoProfessor = new GenericFichario<>(Professor, profs);
+                GenericFichario<Aluno> operacaoAluno = new GenericFichario<>(alunos);
+                GenericFichario<Professor> operacaoProfessor = new GenericFichario<>(profs);
 
-                // alunos.add(new Aluno("Diego", "741"));
-                // alunos.add(new Aluno("Marcos", "159"));
-                // alunos.add(new Aluno("Maria", "156"));
-                // alunos.add(new Aluno("Felipe", "200"));
-                // alunos.add(new Aluno("André", "123"));
+                alunos.add(new Aluno("Diego", "741"));
+                alunos.add(new Aluno("Marcos", "159"));
+                alunos.add(new Aluno("Maria", "156"));
+                alunos.add(new Aluno("Felipe", "200"));
+                alunos.add(new Aluno("André", "123"));
                 operacaoAluno.cadastrar();
                 
 

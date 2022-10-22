@@ -1,7 +1,7 @@
 package main;
 
 public class Motor {
-    private int velocidadeMaxima; // trocar nome de atributos
+    private int velocidadeMaxima;
     private int potencia;
 
     public Motor(int potencia) {
@@ -10,10 +10,10 @@ public class Motor {
     }
 
     // Getts
-    public void getVelocidadeMaxima() {
+    public int getVelocidadeMaxima() {
         return velocidadeMaxima;
     }
-    public void getPotencia() {
+    public int getPotencia() {
         return potencia;
     }
 

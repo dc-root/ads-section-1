@@ -1,7 +1,5 @@
 package main.generics;
 
-import main.modelos.*;
-
 import java.util.ArrayList;
 
 public class GenericFichario<E> {

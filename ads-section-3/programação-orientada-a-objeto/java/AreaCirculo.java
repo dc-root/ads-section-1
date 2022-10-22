@@ -7,7 +7,7 @@ public class AreaCirculo {
 
         double R = leitor.nextDouble();
         double pi = 3.14159F;
-        float A = (float)(pi * (Math.pow(Math.road((R*100.0))/100.0, 2)));
+        float A = (float)(pi * (Math.pow(Math.round((R*100.0))/100.0, 2)));
 
         System.out.printf("A=%.4f\n", (float)A);
         leitor.close();

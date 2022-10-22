@@ -9,7 +9,8 @@ public class SalarioComBonus {
 		float salarioFixo = leitor.nextFloat();
 		float totalDeVendas = leitor.nextFloat();
 
-		float totalAReceber = (float)(Math.floor((salarioFixo + (totalDeVendas * .15))*10.0)/10.0);
-		System.out.printf("TOTAL = R$ %.2f\n\n\n", totalAReceber);
+		float totalAReceber = (float)((salarioFixo + (totalDeVendas * .15)));
+		System.out.printf("TOTAL = R$ %.2f\n\n", totalAReceber);
+		leitor.close();
 	}
 }

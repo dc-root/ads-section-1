@@ -45,16 +45,18 @@ public class AvaliacaoLexicoeSintatico {
         Stack stackCharacters = new Stack();
 
         Error ERR_SYNTAX = new Error("Erro de Sintaxe!");
-        Error ERR_LEXICON = new Error("Erro Léxico!");
+        // Error ERR_LEXICON = Error("Erro Léxico!");
 
         String MathExpression = leitor.nextLine();
+        leitor.close();
 
         for(char ch: MathExpression.toCharArray()) {
             if(!Character.toString(ch).matches("[a-zA-Z0-9]()")) {
-                throw ERR_SINTAXE; // change to log
-            } else if () {
-
+                throw ERR_SYNTAX;
             }
+            // else if () {
+
+            // }
             stackCharacters.push(ch);
         }
     }
