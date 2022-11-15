@@ -33,6 +33,7 @@ header div.top-bar {
     height: 100%;
     width: 800px;
     padding: 20px 0;
+    margin: 0 20px;
 
     display: flex;
     align-items: center;
@@ -74,14 +75,16 @@ header nav.menu-bar ul li a:hover {
 main {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 10px;
 
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-main section {
-    margin: 40px 0;
+main section.section-boxs-imgs,
+main section.section-text {
+    margin: 20px 0;
 }
 
 main section.section-boxs-imgs {
@@ -95,12 +98,10 @@ main section.section-boxs-imgs {
 
 main section.section-boxs-imgs div {
     display: flex;
-    /* background-color: aliceblue; */
-    background-color: #FFF;
-    opacity: background 0.8;
+    border: 1px dashed #111;
 
-    max-height: 190px;
-    max-width: 190px;
+    max-height: 185px;
+    max-width: 185px;
     padding: 10px;
 }
 
@@ -110,21 +111,23 @@ main section.section-boxs-imgs div img {
     margin: auto;
 }
 
-main .section-text {
+main section.section-text {
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
+    gap: 20px;
     flex-basis: auto;
+    margin: 30px 0;
 }
 
-main .section-text div.content-text {
+main section.section-text div.content-text {
+    flex: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
-    flex: 1;
 }
 
-main .section-text div.content-text h3 {
+main section.section-text div.content-text h3 {
     font-size: 25px;
     opacity: 0.85;
     transition: .5s;
@@ -132,16 +135,17 @@ main .section-text div.content-text h3 {
     margin-bottom: 10px;
 }
 
-main .section-text div.content-text p {
+main section.section-text div.content-text p {
     opacity: .7;
     font-weight: 400;
 }
 
-main .section-text div.box-img {
+main section.section-text div.box-img {
     flex: 1;
+    display: flex;
     height: auto;
 }
 
-main .section-text div.box-img img {
+main section.section-text div.box-img img {
     width: 100%;
 }
