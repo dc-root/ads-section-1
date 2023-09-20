@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    flex-direction: column;
+}
+
+header {
+    background-color: red;
+}
+
+/*header .ui-menuitem:has(.item-logo), header .ui-menuitem:has(.item-logo) a {
+    padding: 0;
+}*/
+
+header .logo {
+    height:  40px;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    border-top: 1px solid rgba(0,0,0,0.4);
+    padding: 15px;
+}
