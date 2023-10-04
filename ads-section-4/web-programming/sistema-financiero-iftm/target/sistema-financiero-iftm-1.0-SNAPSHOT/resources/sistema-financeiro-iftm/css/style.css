@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    flex-direction: column;
+}
+
+header .logo {
+    height:  40px;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    border-top: 1px solid rgba(0,0,0,0.4);
+    padding: 15px;
+}
+
+main.container_content {
+    margin: 0 auto;
+    width: 87%;
+}
